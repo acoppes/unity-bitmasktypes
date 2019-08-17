@@ -17,6 +17,8 @@ public class GameTypeAsset : ScriptableObject
 [CustomEditor(typeof(GameTypeAsset))]
 public class GameTypeEditor : Editor
 {
+    // TODO: on import asset, regenerate type values maybe?
+    
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();

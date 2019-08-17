@@ -10,35 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aae9fc7a11c26f48b9eabcb0294200c, type: 3}
-  m_Name: Air
+  m_Name: Small
   m_EditorClassIdentifier: 
   value: 1
---- !u!114 &-7712609306749478419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aae9fc7a11c26f48b9eabcb0294200c, type: 3}
-  m_Name: Water
-  m_EditorClassIdentifier: 
-  value: 4
---- !u!114 &-5472607236696436710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aae9fc7a11c26f48b9eabcb0294200c, type: 3}
-  m_Name: AirAndGround
-  m_EditorClassIdentifier: 
-  value: 3
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,13 +23,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8b3eec464241054382be208e3029fd5, type: 3}
-  m_Name: MovementType
+  m_Name: UnitType
   m_EditorClassIdentifier: 
   typeAssets:
-  - {fileID: -7712609306749478419}
+  - {fileID: 0}
   - {fileID: 8981142579092858432}
   - {fileID: -7949193072842523696}
-  - {fileID: -5472607236696436710}
+  - {fileID: 1081973919930695034}
+--- !u!114 &1081973919930695034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aae9fc7a11c26f48b9eabcb0294200c, type: 3}
+  m_Name: Big
+  m_EditorClassIdentifier: 
+  value: 4
 --- !u!114 &8981142579092858432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +53,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aae9fc7a11c26f48b9eabcb0294200c, type: 3}
-  m_Name: Ground
+  m_Name: Medium
   m_EditorClassIdentifier: 
   value: 2

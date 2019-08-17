@@ -7,8 +7,8 @@ using UnityEditor;
 
 public class TypeAsset : ScriptableObject
 {
-    [HideInInspector]
-    [SerializeField]
+//    [HideInInspector]
+//    [SerializeField]
     public int value;
 
     public T ToEnum<T>() where T : Enum
@@ -34,7 +34,8 @@ public class TypeAssetEditor : Editor
 //                AssetDatabase.SaveAssets();
         }
         
-        // EditorGUILayout.LabelField($"Flag: {Convert.ToString(typeAsset.value, 2).PadLeft(16, '0')}");
+        EditorGUILayout.LabelField($"Flag: {Convert.ToString(typeAsset.value, 2).PadLeft(16, '0')}");
+        
         // button to REMOVE
         if (GUILayout.Button("Remove"))
         {
