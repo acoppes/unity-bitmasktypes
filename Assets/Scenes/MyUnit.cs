@@ -2,30 +2,6 @@
 using System.Linq;
 using UnityEngine;
 
-[Serializable]
-public class DamageTypeFlag
-{
-    // TODO: property drawer to show it nicer maybe?
-    public DamageTypeAsset[] types;
-
-    public int GetEnumValue()
-    {
-        var value = 0;
-        var values = types.Select(t => t.enumFlagValue).ToList();
-        values.ForEach(i => value |= i);
-        return value;
-    }
-
-    public bool HasFlags(int enumValue)
-    {
-        return (GetEnumValue() & enumValue) != 0;
-    }
-    
-//    public T ToEnum<T>() where T : Enum
-//    {
-//        return (T) Enum.ToObject(typeof(T), value);
-//    }
-}
 
 public class MyUnit : MonoBehaviour
 {
@@ -39,12 +15,6 @@ public class MyUnit : MonoBehaviour
 
     public KeyCode attackKey;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -59,6 +29,7 @@ public class MyUnit : MonoBehaviour
                 }
             });
             
+            Debug.Log($"{damageTypes.ToEnum<DamageTypeEnum>()}");
         }
     }
 }
