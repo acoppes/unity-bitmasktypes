@@ -34,7 +34,7 @@ public class TypeAssetEditor : Editor
 //                AssetDatabase.SaveAssets();
         }
         
-        EditorGUILayout.LabelField($"Flag: {Convert.ToString(typeAsset.value, 2).PadLeft(16, '0')}");
+        // EditorGUILayout.LabelField($"Flag: {Convert.ToString(typeAsset.value, 2).PadLeft(16, '0')}");
         // button to REMOVE
         if (GUILayout.Button("Remove"))
         {
@@ -42,6 +42,11 @@ public class TypeAssetEditor : Editor
             AssetDatabase.RemoveObjectFromAsset(typeAsset);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+        }
+
+        if (Event.current.isKey && Event.current.keyCode == KeyCode.Return)
+        {
+            AssetDatabase.SaveAssets();
         }
     }
 }

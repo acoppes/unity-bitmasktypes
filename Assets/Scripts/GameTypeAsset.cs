@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-[CreateAssetMenu(menuName="Iron Marines/GameType")]
+[CreateAssetMenu(menuName="Gemserk/GameType")]
 public class GameTypeAsset : ScriptableObject
 {
     [HideInInspector]
@@ -21,6 +21,22 @@ public class GameTypeEditor : Editor
     {
         base.OnInspectorGUI();
         var gameTypeAsset = target as GameTypeAsset;
+        
+//        if (GUILayout.Button("Reassign"))
+//        {
+//            var types = AssetDatabase
+//                .LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(gameTypeAsset))
+//                .OfType<TypeAsset>().ToList();
+//            
+//            for (var i = 0; i < types.Count; i++)
+//            {
+//                types[i].value = 1 << i;
+//                EditorUtility.SetDirty(types[i]);
+//            }
+//            
+//            AssetDatabase.SaveAssets();
+//        }
+        
         if (GUILayout.Button("Create"))
         {
             var typeAsset = ScriptableObject.CreateInstance<TypeAsset>();
@@ -29,6 +45,7 @@ public class GameTypeEditor : Editor
             AssetDatabase.AddObjectToAsset(typeAsset, gameTypeAsset);
             AssetDatabase.SaveAssets();
             gameTypeAsset.typeAssets.Add(typeAsset);
+            Selection.activeObject = typeAsset;
         }
     }
 }
