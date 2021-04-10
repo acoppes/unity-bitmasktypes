@@ -31,13 +31,13 @@ public class FlagTypeAssetImporter : AssetPostprocessor
             });
             
             var baseTypes = guids.Select(AssetDatabase.GUIDToAssetPath)
-                .Select(AssetDatabase.LoadAssetAtPath<DamageTypeAsset>).ToList();
+                .Select(AssetDatabase.LoadAssetAtPath<BaseTypeAsset>).ToList();
 
             for (var i = 0; i < baseTypes.Count; i++)
             {
-                var damageType = baseTypes[i];
-                damageType.enumFlagValue = 1 << i;
-                EditorUtility.SetDirty(damageType);
+                var baseType = baseTypes[i];
+                baseType.enumFlagValue = 1 << i;
+                EditorUtility.SetDirty(baseType);
             }
         }
     }

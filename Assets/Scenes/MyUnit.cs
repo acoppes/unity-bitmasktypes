@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MyUnit : MonoBehaviour
 {
     // TODO: a way to filter selection (maybe using a property)
 
-    public DamageTypeFlag damageTypes;
+    [FormerlySerializedAs("damageTypes")] 
+    public DamageTypeMask damageTypeMask;
 
-    public DamageTypeFlag acceptDamageTypes;
+    [FormerlySerializedAs("acceptDamageTypes")] 
+    public DamageTypeMask acceptDamageTypeMask;
 
     public int health;
 
@@ -22,14 +25,14 @@ public class MyUnit : MonoBehaviour
             var units = FindObjectsOfType<MyUnit>().Except(new []{this}).ToList();
             units.ForEach(u =>
             {
-                if (u.acceptDamageTypes.HasFlags(damageTypes.GetEnumValue()))
+                if (u.acceptDamageTypeMask.HasFlags(damageTypeMask.GetEnumValue()))
                 {
                     u.health--;
                 }
             });
             
-            Debug.Log($"{damageTypes.ToEnum<DamageTypeEnum>()}");
-            Debug.Log($"{damageTypes}");
+            Debug.Log($"{damageTypeMask.GetEnumValue()}");
+            Debug.Log($"{damageTypeMask}");
         }
     }
 }

@@ -124,6 +124,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &361359095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361359096}
+  m_Layer: 0
+  m_Name: TODO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &361359096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361359095}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1023865580}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,10 +267,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a8dfc8e0065fe43b1441bc4ccaba27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTypes:
+  damageTypeMask:
     types:
     - {fileID: 11400000, guid: e8395e77b64477c4a8d9dacdda360004, type: 2}
-  acceptDamageTypes:
+  acceptDamageTypeMask:
     types:
     - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
     - {fileID: 11400000, guid: 731d0a682ca138b499416d9c691d283f, type: 2}
@@ -258,6 +289,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1023865579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1023865580}
+  m_Layer: 0
+  m_Name: Use attribute on base type mask to show custom prop drawer and allow selecting
+    only that type
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1023865580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023865579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 361359096}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1284861790
 GameObject:
@@ -288,11 +350,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a8dfc8e0065fe43b1441bc4ccaba27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTypes:
+  damageTypeMask:
     types:
     - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
     - {fileID: 11400000, guid: 731d0a682ca138b499416d9c691d283f, type: 2}
-  acceptDamageTypes:
+  acceptDamageTypeMask:
     types:
     - {fileID: 11400000, guid: e8395e77b64477c4a8d9dacdda360004, type: 2}
   health: 10
@@ -345,6 +407,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3ee2fb2476796a7438b8d560c307ccfa, type: 2}
     - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
     - {fileID: 11400000, guid: e8395e77b64477c4a8d9dacdda360004, type: 2}
+  movement:
+    types: []
 --- !u!4 &1872334124
 Transform:
   m_ObjectHideFlags: 0

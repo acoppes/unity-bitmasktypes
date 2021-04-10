@@ -2,5 +2,8 @@ using UnityEngine;
 
 public class OneDamage : MonoBehaviour
 {
-    public DamageTypeFlag damageTypes;
+    // public DamageTypeMask damageTypes;
+
+    [TypeMask(typeof(MovementTypeAsset))]
+    public BaseTypeMask movement;
 }
