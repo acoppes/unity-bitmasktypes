@@ -20,6 +20,9 @@ public class BaseTypeMask
         for (var i = 0; i < types.Length; i++)
         {
             var typeAsset = types[i];
+            // Empty entry in array or missing reference (deleted type maybe)
+            if (typeAsset == null)
+                continue;
             cachedValue |= typeAsset.enumFlagValue;
         }
 

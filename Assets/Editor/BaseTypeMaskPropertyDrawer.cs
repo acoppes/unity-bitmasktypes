@@ -32,6 +32,9 @@ public class BaseTypeMaskPropertyDrawer : PropertyDrawer
         for (var i = 0; i < types.arraySize; i++)
         {
             var baseType = types.GetArrayElementAtIndex(i).objectReferenceValue as BaseTypeAsset;
+            // Missing reference or empty array entry.
+            if (baseType == null)
+                continue;
             currentMask |= baseType.enumFlagValue;
         }
         

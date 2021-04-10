@@ -238,6 +238,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &667936678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 667936680}
+  - component: {fileID: 667936679}
+  m_Layer: 0
+  m_Name: ObjectWithMovement (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &667936679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667936678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1831fe7770944ed9ae3e821fffa1e210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement:
+    types:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: a3ba7fbc9e1dad94d8060290e440ca96, type: 2}
+--- !u!4 &667936680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667936678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747453922
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,10 +400,9 @@ MonoBehaviour:
   damageTypeMask:
     types:
     - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
-    - {fileID: 11400000, guid: 731d0a682ca138b499416d9c691d283f, type: 2}
   acceptDamageTypeMask:
     types:
-    - {fileID: 11400000, guid: e8395e77b64477c4a8d9dacdda360004, type: 2}
+    - {fileID: 11400000, guid: 1ed6ca26192861a45845a2ecd0356a7e, type: 2}
   health: 10
   attackKey: 49
 --- !u!4 &1284861792
@@ -384,7 +430,7 @@ GameObject:
   - component: {fileID: 1872334124}
   - component: {fileID: 1872334123}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ObjectWithMovement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,13 +448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1831fe7770944ed9ae3e821fffa1e210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTypes:
-    types:
-    - {fileID: 11400000, guid: 3ee2fb2476796a7438b8d560c307ccfa, type: 2}
-    - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
-    - {fileID: 11400000, guid: e8395e77b64477c4a8d9dacdda360004, type: 2}
   movement:
-    types: []
+    types:
+    - {fileID: 11400000, guid: a3ba7fbc9e1dad94d8060290e440ca96, type: 2}
 --- !u!4 &1872334124
 Transform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60471a7400b7404ebc5fad5023d07cea, type: 3}
-  m_Name: SecondDamage
+  m_Script: {fileID: 11500000, guid: 91d404c517d645baba0e1345773ae5ab, type: 3}
+  m_Name: TestMovement
   m_EditorClassIdentifier: 
-  enumFlagValue: 2
+  enumFlagValue: 4
