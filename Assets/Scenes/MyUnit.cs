@@ -1,24 +1,20 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using Gemserk.BitmaskTypes;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MyUnit : MonoBehaviour
 {
-    // TODO: a way to filter selection (maybe using a property)
- 
     [TypeMask(typeof(DamageTypeAsset))]
-    public DamageTypeMask damageTypeMask;
+    public BaseTypeMask damageTypeMask;
 
     [TypeMask(typeof(DamageTypeAsset))]
-    public DamageTypeMask acceptDamageTypeMask;
+    public BaseTypeMask acceptDamageTypeMask;
 
     public int health;
 
     public KeyCode attackKey;
     
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyUp(attackKey))
         {
@@ -31,7 +27,7 @@ public class MyUnit : MonoBehaviour
                 }
             });
             
-            Debug.Log($"{damageTypeMask.GetEnumValue()}");
+            // Debug.Log($"{damageTypeMask.GetEnumValue()}");
             Debug.Log($"{damageTypeMask}");
         }
     }

@@ -1,3 +1,4 @@
+using Gemserk.BitmaskTypes;
 using UnityEngine;
 
 public class OneDamage : MonoBehaviour
