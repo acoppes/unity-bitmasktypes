@@ -15,7 +15,7 @@ namespace Gemserk.BitmaskTypes.Editor
             EditorGUILayout.ObjectField("Script:", MonoScript.FromScriptableObject(typeAsset), 
                 typeAsset.GetType(), false);
         
-            var binary = Convert.ToString(typeAsset.enumFlagValue, 2).PadLeft(sizeof(int) * 8, '0');
+            var binary = Convert.ToString(typeAsset.bitmaskValue, 2).PadLeft(sizeof(int) * 8, '0');
 
             EditorGUILayout.TextField("Flag" , binary);
         

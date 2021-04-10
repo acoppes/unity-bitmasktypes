@@ -25,7 +25,7 @@ namespace Gemserk.BitmaskTypes
                 // Empty entry in array or missing reference (deleted type maybe)
                 if (typeAsset == null)
                     continue;
-                cachedValue |= typeAsset.enumFlagValue;
+                cachedValue |= typeAsset.bitmaskValue;
             }
 
             cached = true;

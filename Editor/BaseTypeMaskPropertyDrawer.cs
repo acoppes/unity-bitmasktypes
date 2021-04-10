@@ -23,7 +23,7 @@ namespace Gemserk.BitmaskTypes.Editor
                 .Select(AssetDatabase.LoadAssetAtPath<BaseTypeAsset>)
                 .ToList();
         
-            allTypes.Sort((a, b) => a.enumFlagValue.CompareTo(b.enumFlagValue));
+            allTypes.Sort((a, b) => a.bitmaskValue.CompareTo(b.bitmaskValue));
 
             var types = property.FindPropertyRelative("types");
             var currentMask = 0;
@@ -33,7 +33,7 @@ namespace Gemserk.BitmaskTypes.Editor
                 // Missing reference or empty array entry.
                 if (baseType == null)
                     continue;
-                currentMask |= baseType.enumFlagValue;
+                currentMask |= baseType.bitmaskValue;
             }
         
             EditorGUI.BeginChangeCheck();
@@ -45,7 +45,7 @@ namespace Gemserk.BitmaskTypes.Editor
                 var i = 0;
                 foreach (var baseType in allTypes)
                 {
-                    if ((baseType.enumFlagValue & newMask) == 0) 
+                    if ((baseType.bitmaskValue & newMask) == 0) 
                         continue;
                     types.InsertArrayElementAtIndex(i);
                     types.GetArrayElementAtIndex(i).objectReferenceValue = baseType;
