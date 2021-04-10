@@ -6,11 +6,11 @@ using UnityEngine.Serialization;
 public class MyUnit : MonoBehaviour
 {
     // TODO: a way to filter selection (maybe using a property)
-
-    [FormerlySerializedAs("damageTypes")] 
+ 
+    [TypeMask(typeof(DamageTypeAsset))]
     public DamageTypeMask damageTypeMask;
 
-    [FormerlySerializedAs("acceptDamageTypes")] 
+    [TypeMask(typeof(DamageTypeAsset))]
     public DamageTypeMask acceptDamageTypeMask;
 
     public int health;

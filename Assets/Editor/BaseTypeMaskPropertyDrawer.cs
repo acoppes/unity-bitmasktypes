@@ -27,22 +27,30 @@ public class BaseTypeMaskPropertyDrawer : PropertyDrawer
         
         allTypes.Sort((a, b) => a.enumFlagValue.CompareTo(b.enumFlagValue));
 
-        EditorGUI.MaskField(position, "Bit Mask", 1, allTypes.Select(t => t.name).ToArray());
+        var types = property.FindPropertyRelative("types");
+        var currentMask = 0;
+        for (var i = 0; i < types.arraySize; i++)
+        {
+            var baseType = types.GetArrayElementAtIndex(i).objectReferenceValue as BaseTypeAsset;
+            currentMask |= baseType.enumFlagValue;
+        }
+        
+        EditorGUI.BeginChangeCheck();
+        var newMask = EditorGUI.MaskField(position, property.displayName, currentMask, allTypes.Select(t => t.name).ToArray());
 
-        // var types = property.FindPropertyRelative("types");
-        // var value = 0;
-        //
-        // for (var i = 0; i < types.arraySize; i++)
-        // {
-        //     var b = types.GetArrayElementAtIndex(i).objectReferenceValue as BaseTypeAsset;
-        //     if (b == null)
-        //         continue;
-        //     value |= b.enumFlagValue;
-        // }
-        //
-        // var r = new Rect(position.x, 10 + (property.CountInProperty() + 1) * 20, position.width  * 0.75f, 20);
-        //
-        // EditorGUI.LabelField(r,  Convert.ToString(value, 2).PadLeft(sizeof(int) * 8, '0'));
+        if (EditorGUI.EndChangeCheck())
+        {
+            types.ClearArray();
+            var i = 0;
+            foreach (var baseType in allTypes)
+            {
+                if ((baseType.enumFlagValue & newMask) == 0) 
+                    continue;
+                types.InsertArrayElementAtIndex(i);
+                types.GetArrayElementAtIndex(i).objectReferenceValue = baseType;
+                i++;
+            }
+        }
     }
  
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
