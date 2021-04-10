@@ -16,12 +16,26 @@ public class DamageTypeFlag
     // TODO: property drawer to show it nicer maybe?
     public DamageTypeAsset[] types;
 
+    [NonSerialized]
+    private bool cached;
+    
+    [NonSerialized]
+    private int cachedValue = 0;
+
     public int GetEnumValue()
     {
-        var value = 0;
-        var values = types.Select(t => t.enumFlagValue).ToList();
-        values.ForEach(i => value |= i);
-        return value;
+        if (cached) 
+            return cachedValue;
+
+        for (var i = 0; i < types.Length; i++)
+        {
+            var typeAsset = types[i];
+            cachedValue |= typeAsset.enumFlagValue;
+        }
+
+        cached = true;
+        
+        return cachedValue;
     }
 
     public bool HasFlags(int enumValue)

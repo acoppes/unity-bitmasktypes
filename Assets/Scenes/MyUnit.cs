@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEngine;
 
-
 public class MyUnit : MonoBehaviour
 {
     // TODO: a way to filter selection (maybe using a property)
