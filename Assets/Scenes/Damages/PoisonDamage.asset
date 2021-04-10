@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60471a7400b7404ebc5fad5023d07cea, type: 3}
-  m_Name: IceDamage
+  m_Name: PoisonDamage
   m_EditorClassIdentifier: 
-  enumFlagValue: 4
+  enumFlagValue: 16

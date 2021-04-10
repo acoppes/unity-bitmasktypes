@@ -1,44 +1,44 @@
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 
 public class FlagTypeAssetImporter : AssetPostprocessor
 {
-    private static bool reimporting;
-
     private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets,
         string[] movedFromAssetPaths)
     {
-        if (reimporting)
-            return;
-        
-        var regenerateDamageTypes = false;
+        var typeFolders = new List<string>();
         
         foreach (var importedAsset in importedAssets)
         {
-            var asset = AssetDatabase.LoadAssetAtPath<DamageTypeAsset>(importedAsset);
+            var asset = AssetDatabase.LoadAssetAtPath<BaseTypeAsset>(importedAsset);
             if (asset == null)
                 continue;
-            regenerateDamageTypes = true;
+            var typeFolder = Path.GetDirectoryName(importedAsset);
+
+            if (typeFolders.Contains(typeFolder))
+                continue;
+            
+            typeFolders.Add(Path.GetDirectoryName(importedAsset));
         }
 
-        if (regenerateDamageTypes)
+        foreach (var typeFolder in typeFolders)
         {
-            reimporting = true;
+            var guids = AssetDatabase.FindAssets("t:BaseTypeAsset", new []
+            {
+                typeFolder
+            });
             
-            var damageTypeGuids = AssetDatabase.FindAssets("t:DamageTypeAsset");
-            var damageTypes = damageTypeGuids.Select(AssetDatabase.GUIDToAssetPath)
+            var baseTypes = guids.Select(AssetDatabase.GUIDToAssetPath)
                 .Select(AssetDatabase.LoadAssetAtPath<DamageTypeAsset>).ToList();
 
-            for (var i = 0; i < damageTypes.Count; i++)
+            for (var i = 0; i < baseTypes.Count; i++)
             {
-                var damageType = damageTypes[i];
+                var damageType = baseTypes[i];
                 damageType.enumFlagValue = 1 << i;
                 EditorUtility.SetDirty(damageType);
             }
-            
-            // AssetDatabase.SaveAssets();
-
-            reimporting = false;
         }
     }
 }
