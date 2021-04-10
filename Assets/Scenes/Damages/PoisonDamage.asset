@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60471a7400b7404ebc5fad5023d07cea, type: 3}
   m_Name: PoisonDamage
   m_EditorClassIdentifier: 
-  enumFlagValue: 16
+  bitmaskValue: 16

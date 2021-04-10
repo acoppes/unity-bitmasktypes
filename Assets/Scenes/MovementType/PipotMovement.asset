@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d404c517d645baba0e1345773ae5ab, type: 3}
   m_Name: PipotMovement
   m_EditorClassIdentifier: 
-  enumFlagValue: 2
+  bitmaskValue: 2

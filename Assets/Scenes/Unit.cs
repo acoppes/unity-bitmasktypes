@@ -2,7 +2,7 @@
 using Gemserk.BitmaskTypes;
 using UnityEngine;
 
-public class MyUnit : MonoBehaviour
+public class Unit : MonoBehaviour
 {
     [TypeMask(typeof(DamageTypeAsset))]
     public BaseTypeMask damageTypeMask;
@@ -10,6 +10,9 @@ public class MyUnit : MonoBehaviour
     [TypeMask(typeof(DamageTypeAsset))]
     public BaseTypeMask acceptDamageTypeMask;
 
+    [TypeMask(typeof(MovementTypeAsset))]
+    public BaseTypeMask movementType;
+    
     public int health;
 
     public KeyCode attackKey;
@@ -18,7 +21,7 @@ public class MyUnit : MonoBehaviour
     {
         if (Input.GetKeyUp(attackKey))
         {
-            var units = FindObjectsOfType<MyUnit>().Except(new []{this}).ToList();
+            var units = FindObjectsOfType<Unit>().Except(new []{this}).ToList();
             units.ForEach(u =>
             {
                 if (u.acceptDamageTypeMask.HasFlags(damageTypeMask.GetEnumValue()))

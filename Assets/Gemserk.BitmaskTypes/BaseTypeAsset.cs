@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Gemserk.BitmaskTypes
 {
-    public class BaseTypeAsset : ScriptableObject
+    public abstract class BaseTypeAsset : ScriptableObject
     {
-        public int enumFlagValue;
+        public int bitmaskValue;
     }
 }

@@ -34,7 +34,7 @@ namespace Gemserk.BitmaskTypes.Editor
                 for (var i = 0; i < baseTypes.Count; i++)
                 {
                     var baseType = baseTypes[i];
-                    baseType.enumFlagValue = 1 << i;
+                    baseType.bitmaskValue = 1 << i;
                     EditorUtility.SetDirty(baseType);
                 }
             }
