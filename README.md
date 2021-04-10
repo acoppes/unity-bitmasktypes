@@ -25,6 +25,8 @@ Here you declare a field of type BaseTypeMask, and say the type you want is of t
 
 ## TODO
 
-* Better Readme
-* Better examples
+* Better Readme (maybe some image to explain better)
+* Better example
 * Project structure to upload to OpenUPM or something like that.
+* Autogenerate code with masks to use directly in code.
+* Prop drawer bug with multiselection
