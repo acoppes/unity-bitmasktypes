@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTypes:
     types:
-    - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
+    - {fileID: 11400000, guid: e8395e77b64477c4a8d9dacdda360004, type: 2}
   acceptDamageTypes:
     types:
     - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
@@ -290,7 +290,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 731d0a682ca138b499416d9c691d283f, type: 2}
   acceptDamageTypes:
     types:
-    - {fileID: 11400000, guid: 731d0a682ca138b499416d9c691d283f, type: 2}
+    - {fileID: 11400000, guid: e8395e77b64477c4a8d9dacdda360004, type: 2}
   health: 10
   attackKey: 49
 --- !u!4 &1284861792

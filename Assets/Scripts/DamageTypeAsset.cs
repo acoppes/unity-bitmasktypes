@@ -33,6 +33,11 @@ public class DamageTypeFlag
     {
         return (T) Enum.ToObject(typeof(T), GetEnumValue());
     }
+
+    public override string ToString()
+    {
+        return string.Join("|", types.Select(t => t.name));
+    }
 }
 
 [CreateAssetMenu(menuName="Gemserk/Damage Type")]

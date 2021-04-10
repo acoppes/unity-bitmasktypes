@@ -30,6 +30,7 @@ public class MyUnit : MonoBehaviour
             });
             
             Debug.Log($"{damageTypes.ToEnum<DamageTypeEnum>()}");
+            Debug.Log($"{damageTypes}");
         }
     }
 }
