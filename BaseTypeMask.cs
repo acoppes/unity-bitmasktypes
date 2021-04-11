@@ -37,6 +37,16 @@ namespace Gemserk.BitmaskTypes
         {
             return (GetEnumValue() & enumValue) != 0;
         }
+        
+        public bool HasFlags(BaseTypeAsset b)
+        {
+            return (GetEnumValue() & b.bitmaskValue) != 0;
+        }
+        
+        // public bool HasFlags<T>(T b) where T: Enum
+        // {
+        //     return (GetEnumValue() & typeof(T)) != 0;
+        // }
     
         public T ToEnum<T>() where T : Enum
         {

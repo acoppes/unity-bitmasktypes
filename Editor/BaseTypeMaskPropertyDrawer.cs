@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Gemserk.BitmaskTypes.Editor
 {
-    [CustomPropertyDrawer(typeof(TypeMaskAttribute), true)]
+    [CustomPropertyDrawer(typeof(BaseTypeMaskAttribute), true)]
     public class BaseTypeMaskPropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var typeAttribute = attribute as TypeMaskAttribute;
+            var typeAttribute = attribute as BaseTypeMaskAttribute;
 
             if (typeAttribute == null)
             {
@@ -62,7 +62,7 @@ namespace Gemserk.BitmaskTypes.Editor
  
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var typeAttribute = attribute as TypeMaskAttribute;
+            var typeAttribute = attribute as BaseTypeMaskAttribute;
 
             if (typeAttribute == null)
             {

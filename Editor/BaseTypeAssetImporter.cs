@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace Gemserk.BitmaskTypes.Editor
 {
-    public class FlagTypeAssetImporter : AssetPostprocessor
+    public class BaseTypeAssetImporter : AssetPostprocessor
     {
         private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets,
             string[] movedFromAssetPaths)
