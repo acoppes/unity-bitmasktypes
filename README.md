@@ -45,7 +45,9 @@ public enum TargetType
 }
 ```
 
-So we could configure in editor by selecting the flags we wanted, and then we just compared using bitwise operations to check if a target matches the ability targeting parameters. This works pretty well internally, but at some point I wanted to delegate to the Game Designer team the decision of which enums they wanted for the game and at the same time, hide the fact that internally we need them to be bitmasks. 
+So we could configure in editor by selecting the flags we wanted, and then we just compared using bitwise operations to check if a target matches the ability targeting parameters. This works pretty well internally, but at some point I wanted to delegate to the Game Designer team the decision of which enums they wanted for the game and at the same time, hide the fact that internally we need them to be bitmasks.
+
+I wanted the base concepts to be part of the engine, like for example the `damage type`, but the values to be part of the game using the core engine, like having `ice damage type` it might be useful for one game, but for another it makes no sense, wanted a way to decouple the final values from the core engine.
 
 Not sure if this is the right approach, I am just exploring some ideas.
 
