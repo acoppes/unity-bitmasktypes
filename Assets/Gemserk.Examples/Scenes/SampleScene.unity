@@ -239,9 +239,8 @@ MonoBehaviour:
   damageTypeMask:
     types:
     - {fileID: 11400000, guid: 1ed6ca26192861a45845a2ecd0356a7e, type: 2}
-  acceptDamageTypeMask:
+  resistDamageTypeMask:
     types:
-    - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
     - {fileID: 11400000, guid: 731d0a682ca138b499416d9c691d283f, type: 2}
   movementType:
     types:
@@ -294,9 +293,10 @@ MonoBehaviour:
   damageTypeMask:
     types:
     - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
-  acceptDamageTypeMask:
+  resistDamageTypeMask:
     types:
     - {fileID: 11400000, guid: 1ed6ca26192861a45845a2ecd0356a7e, type: 2}
+    - {fileID: 11400000, guid: af6166389a2eaea4fab68b37a7f6cd78, type: 2}
   movementType:
     types:
     - {fileID: 11400000, guid: 7356706399f6115438e28d3b95dc69c4, type: 2}

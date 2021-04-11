@@ -10,7 +10,7 @@ namespace Gemserk.Examples
         public BaseTypeMask damageTypeMask;
 
         [BaseTypeMask(typeof(DamageTypeAsset))]
-        public BaseTypeMask acceptDamageTypeMask;
+        public BaseTypeMask resistDamageTypeMask;
 
         [BaseTypeMask(typeof(MovementTypeAsset))]
         public BaseTypeMask movementType;
@@ -26,10 +26,11 @@ namespace Gemserk.Examples
                 var units = FindObjectsOfType<Unit>().Except(new []{this}).ToList();
                 units.ForEach(u =>
                 {
-                    if (u.acceptDamageTypeMask.HasFlags(damageTypeMask.GetEnumValue()))
+                    if (u.resistDamageTypeMask.HasFlags(damageTypeMask.GetEnumValue()))
                     {
-                        u.health--;
+                        return;
                     }
+                    u.health--;
                 });
             
                 // Debug.Log($"{damageTypeMask.GetEnumValue()}");
