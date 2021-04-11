@@ -19,6 +19,10 @@ namespace Gemserk.Examples
         
         GroundMovement = 1 << 1,
         
-        WaterMovement = 1 << 2,
+        SpaceMovement = 1 << 2,
+        
+        VoidMovement = 1 << 3,
+        
+        WaterMovement = 1 << 4,
     }
 }

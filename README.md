@@ -51,7 +51,6 @@ Not sure if this is the right approach, I am just exploring some ideas.
 
 # TODO
 
-* Better Readme (maybe some image to explain better)
 * Better example
 * Project structure to upload to OpenUPM or something like that.
-* Autogenerate code with masks to use directly in code.
+* Autogenerate attribute to enums and static methods for bitmask comparisons since c# hasflags is super slow.

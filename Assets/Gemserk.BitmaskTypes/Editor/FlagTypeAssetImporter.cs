@@ -11,6 +11,7 @@ namespace Gemserk.BitmaskTypes.Editor
             string[] movedFromAssetPaths)
         {
             var typesToReload = new List<Type>();
+            var shouldRegenerateCode = false;
         
             foreach (var importedAsset in importedAssets)
             {
@@ -36,7 +37,14 @@ namespace Gemserk.BitmaskTypes.Editor
                     var baseType = baseTypes[i];
                     baseType.bitmaskValue = 1 << i;
                     EditorUtility.SetDirty(baseType);
+
+                    shouldRegenerateCode = true;
                 }
+            }
+
+            if (shouldRegenerateCode)
+            {
+                BaseTypeCodeGeneration.RegenerateAllEnumTypeCode();
             }
         }
     }
