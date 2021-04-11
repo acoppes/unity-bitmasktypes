@@ -26,6 +26,11 @@ public class UnitWithDamage : MonoBehaviour
 
 Here you declare a field of type BaseTypeMask, and say the type you want is of type `DamageTypeAsset` so the custom property drawer will allow you select the bits you want using an enum mask (internally saves a list of asset references, not the bitmask).
 
+In editor, it looks like this:
+
+
+![An example of how it looks in the editor](images/example1.png?raw=true "Example1")
+
 # Motivation
 
 When working on Iron Marines, we used bitmasks to speed up units' abilities targeting logic. To do that, we were using c# enums and using them in Unity as flags, like this:
