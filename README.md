@@ -1,5 +1,3 @@
-# unity-bitmasktypes
-
 # Introduction
 
 The idea with this project is having a way of creating custom enums in editor, by Game Designers for example, and use them internally for fast comparisons as bitmasks.
@@ -51,7 +49,7 @@ I wanted the base concepts to be part of the engine, like for example the `damag
 
 Not sure if this is the right approach, I am just exploring some ideas.
 
-## TODO
+# TODO
 
 * Better Readme (maybe some image to explain better)
 * Better example
