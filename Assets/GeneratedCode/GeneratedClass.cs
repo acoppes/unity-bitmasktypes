@@ -13,7 +13,9 @@ namespace GeneratedCode
     using System;
     
     
-    public class GeneratedClass
+    public enum GeneratedEnum
     {
+        
+        FirstValue = 1 << 0,
     }
 }
