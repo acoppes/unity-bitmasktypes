@@ -2,36 +2,57 @@ using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using Gemserk.Examples;
 using UnityEditor;
+using UnityEditor.VersionControl;
+using UnityEngine;
 
 public static class TestCodeGeneration 
 {
-    // private static CodeFieldReferenceExpression createEnumVar() {
-    //     var e = new CodeFieldReferenceExpression(
-    //             new CodeTypeReferenceExpression(
-    //                 typeof(int)
-    //             ),
-    //             "Magenta");
-    //     return e;
-    // }
-
     [MenuItem("Gemserk/Generate Code")]
     public static void GenerateCode()
     {
-        GenerateEnumCode(new List<string>()
+        // GenerateEnumMaskCode("GeneratedCode", "GeneratedEnum", "Assets/GeneratedCode", new List<string>()
+        // {
+        //     "IceDamage", "FireDamage", "PoisonDamage"
+        // });
+
+        var t = typeof(DamageTypeAsset);
+
+        var typeFolder = AssetDatabase.FindAssets($"t:TextAsset {t.Name}")
+            .Select(AssetDatabase.GUIDToAssetPath)
+            .Where(p => p.EndsWith($"{t.Name}.cs"))
+            .Select(Path.GetDirectoryName)
+            .FirstOrDefault();
+
+        if (string.IsNullOrEmpty(typeFolder))
         {
-            "IceDamage", "FireDamage", "PoisonDamage"
-        });
+            Debug.Log($"Couldn't find folder for type {t.Name}");
+            return;
+        }
+        
+        var types = AssetDatabase.FindAssets($"t:{t.Name}")
+            .Select(AssetDatabase.GUIDToAssetPath)
+            .Select(AssetDatabase.LoadAssetAtPath<DamageTypeAsset>)
+            .ToList();
+        
+        types.Sort((a, b) => a.bitmaskValue.CompareTo(b.bitmaskValue));
+        
+        GenerateEnumMaskCode(t.Namespace, $"{t.Name}Enum", typeFolder, 
+            types.Select(t => t.name).ToList());
     }
 
-    private static void GenerateEnumCode(IReadOnlyList<string> typesInOrder)
+    public static void GenerateEnumMaskCode(string namespaceName, string enumName, string targetFolder,
+        IReadOnlyList<string> typesInOrder)
     {
         var targetUnit = new CodeCompileUnit();
-        var targetNamespace = new CodeNamespace("GeneratedCode");
-        targetNamespace.Imports.Add(new CodeNamespaceImport("System"));
+        var targetNamespace = new CodeNamespace(namespaceName);
 
-        var targetClass = new CodeTypeDeclaration("GeneratedEnum")
+        // targetNamespace.Imports.Add(new CodeNamespaceImport("System"));
+
+        var targetClass = new CodeTypeDeclaration(enumName)
         {
             IsEnum = true,
             TypeAttributes = TypeAttributes.Public
@@ -63,17 +84,14 @@ public static class TestCodeGeneration
             BracingStyle = "C"
         };
 
-        var generatedClassFolder = "Assets/GeneratedCode";
-        var generatedClassFile = "GeneratedClass.cs";
+        var generatedClassFile = $"{enumName}.cs";
         
-        // Path.Combine(Directory.GetCurrentDirectory(), generatedClassFolder)
-
-        if (!Directory.Exists(generatedClassFolder))
+        if (!Directory.Exists(targetFolder))
         {
-            Directory.CreateDirectory(generatedClassFolder);
+            Directory.CreateDirectory(targetFolder);
         }
         
-        using (var sourceWriter = new StreamWriter(Path.Combine(generatedClassFolder, generatedClassFile)))
+        using (var sourceWriter = new StreamWriter(Path.Combine(targetFolder, generatedClassFile)))
         {
             provider.GenerateCodeFromCompileUnit(targetUnit, sourceWriter, options);
         }

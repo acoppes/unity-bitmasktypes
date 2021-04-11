@@ -10,7 +10,6 @@
 
 namespace GeneratedCode
 {
-    using System;
     
     
     public enum GeneratedEnum
