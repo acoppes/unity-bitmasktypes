@@ -69,8 +69,8 @@ I wanted the base concepts to be part of the engine, like for example the `damag
 
 Not sure if this is the right approach, I am just exploring some ideas.
 
+Another idea could've just been to use ints in the core engine and enums in the game using the engine, but for don't know how to link the two in the unity inspector and show an enum mask popup when editing the int from the core engine without having to add game related metadata in the core engine itself.
+
 # TODO
 
-* Better example
 * Project structure to upload to OpenUPM or something like that.
-* Autogenerate attribute to enums and static methods for bitmask comparisons since c# hasflags is super slow.

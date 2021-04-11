@@ -10,17 +10,14 @@
 
 namespace Gemserk.Examples
 {
+    using System;
     
-    
+    [Flags()]
     public enum DamageTypeAssetEnum
     {
-        
         ElectricDamage = 1 << 0,
-        
         FireDamage = 1 << 1,
-        
         IceDamage = 1 << 2,
-        
         PoisonDamage = 1 << 3,
     }
 }

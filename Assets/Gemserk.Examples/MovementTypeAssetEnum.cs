@@ -10,19 +10,15 @@
 
 namespace Gemserk.Examples
 {
+    using System;
     
-    
+    [Flags()]
     public enum MovementTypeAssetEnum
     {
-        
         AirMovement = 1 << 0,
-        
         GroundMovement = 1 << 1,
-        
         SpaceMovement = 1 << 2,
-        
         VoidMovement = 1 << 3,
-        
         WaterMovement = 1 << 4,
     }
 }

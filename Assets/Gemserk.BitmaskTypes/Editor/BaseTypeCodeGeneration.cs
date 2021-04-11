@@ -59,13 +59,15 @@ namespace Gemserk.BitmaskTypes.Editor
             var targetUnit = new CodeCompileUnit();
             var targetNamespace = new CodeNamespace(namespaceName);
 
-            // targetNamespace.Imports.Add(new CodeNamespaceImport("System"));
+            targetNamespace.Imports.Add(new CodeNamespaceImport("System"));
 
             var targetClass = new CodeTypeDeclaration(enumName)
             {
                 IsEnum = true,
                 TypeAttributes = TypeAttributes.Public
             };
+
+            targetClass.CustomAttributes.Add(new CodeAttributeDeclaration("Flags"));
 
             for (var i = 0; i < typesInOrder.Count; i++)
             {
@@ -90,7 +92,8 @@ namespace Gemserk.BitmaskTypes.Editor
             var provider = CodeDomProvider.CreateProvider("CSharp");
             var options = new CodeGeneratorOptions
             {
-                BracingStyle = "C"
+                BlankLinesBetweenMembers = false,
+                BracingStyle = "C",
             };
 
             var generatedClassFile = $"{enumName}.cs";
