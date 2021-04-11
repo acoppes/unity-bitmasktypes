@@ -4,11 +4,11 @@ using UnityEngine;
 namespace Gemserk.BitmaskTypes
 {
     [AttributeUsage(AttributeTargets.Field)]
-    public class TypeMaskAttribute : PropertyAttribute
+    public class BaseTypeMaskAttribute : PropertyAttribute
     {
         public Type type;
 
-        public TypeMaskAttribute(Type type)
+        public BaseTypeMaskAttribute(Type type)
         {
             this.type = type;
         }
