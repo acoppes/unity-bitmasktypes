@@ -1,0 +1,17 @@
+{
+  "name": "com.gemserk.bitmasktypes",
+  "version": "0.0.1",
+  "displayName": "Unity Bitmask Types by Gemserk",
+  "description": "Unity Bitmask Types https://github.com/acoppes/unity-bitmasktypes",
+  "unity": "2020.3",
+  "unityRelease": "2f1",
+  "dependencies": { },
+  "keywords": [
+    "tools"
+  ],
+  "author": {
+    "name": "Ariel Coppes",
+    "email": "ariel.coppes@gmail.com",
+    "url": "https://blog.gemserk.com"
+  }
+}
