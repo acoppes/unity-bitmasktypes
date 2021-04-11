@@ -17,6 +17,12 @@ namespace Gemserk.BitmaskTypes.Editor
                 return;
             }
 
+            if (property.serializedObject.isEditingMultipleObjects)
+            {
+                EditorGUI.PropertyField(position, property, label, true);
+                return;
+            }
+
             var baseSpecificType = typeAttribute.type;
             var allTypes = AssetDatabase.FindAssets($"t:{baseSpecificType.Name}")
                 .Select(AssetDatabase.GUIDToAssetPath)
@@ -59,6 +65,11 @@ namespace Gemserk.BitmaskTypes.Editor
             var typeAttribute = attribute as TypeMaskAttribute;
 
             if (typeAttribute == null)
+            {
+                return EditorGUI.GetPropertyHeight(property);
+            }
+            
+            if (property.serializedObject.isEditingMultipleObjects)
             {
                 return EditorGUI.GetPropertyHeight(property);
             }
