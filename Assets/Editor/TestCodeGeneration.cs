@@ -1,9 +1,11 @@
+using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Gemserk.BitmaskTypes;
 using Gemserk.Examples;
 using UnityEditor;
 using UnityEditor.VersionControl;
@@ -19,8 +21,23 @@ public static class TestCodeGeneration
         //     "IceDamage", "FireDamage", "PoisonDamage"
         // });
 
-        var t = typeof(DamageTypeAsset);
+        // GenerateEnumMaskCode(typeof(DamageTypeAsset));
 
+        var allAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+        foreach (var assembly in allAssemblies)
+        {
+            foreach (var type in assembly.GetTypes())
+            {
+                if (type.IsSubclassOf(typeof(BaseTypeAsset)))
+                {
+                    GenerateEnumMaskCode(type);
+                }
+            }
+        }
+    }
+
+    public static void GenerateEnumMaskCode(Type t)
+    {
         var typeFolder = AssetDatabase.FindAssets($"t:TextAsset {t.Name}")
             .Select(AssetDatabase.GUIDToAssetPath)
             .Where(p => p.EndsWith($"{t.Name}.cs"))
@@ -35,7 +52,7 @@ public static class TestCodeGeneration
         
         var types = AssetDatabase.FindAssets($"t:{t.Name}")
             .Select(AssetDatabase.GUIDToAssetPath)
-            .Select(AssetDatabase.LoadAssetAtPath<DamageTypeAsset>)
+            .Select(AssetDatabase.LoadAssetAtPath<BaseTypeAsset>)
             .ToList();
         
         types.Sort((a, b) => a.bitmaskValue.CompareTo(b.bitmaskValue));
