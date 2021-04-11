@@ -1,5 +1,6 @@
 using System.CodeDom;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UnityEditor;
@@ -14,9 +15,17 @@ public static class TestCodeGeneration
     //             "Magenta");
     //     return e;
     // }
-    
+
     [MenuItem("Gemserk/Generate Code")]
     public static void GenerateCode()
+    {
+        GenerateEnumCode(new List<string>()
+        {
+            "IceDamage", "FireDamage", "PoisonDamage"
+        });
+    }
+
+    private static void GenerateEnumCode(IReadOnlyList<string> typesInOrder)
     {
         var targetUnit = new CodeCompileUnit();
         var targetNamespace = new CodeNamespace("GeneratedCode");
@@ -28,23 +37,23 @@ public static class TestCodeGeneration
             TypeAttributes = TypeAttributes.Public
         };
 
-        // var enumField = new CodeMemberField("GeneratedEnum", "FirstValue");
-
-        var initExpression = new CodeSnippetExpression ("1 << 0");
-        
-        var enumValue = new CodeMemberField
+        for (var i = 0; i < typesInOrder.Count; i++)
         {
-            Attributes = MemberAttributes.Public,
-            Name = "FirstValue", 
-            InitExpression = initExpression
-            // Type = new CodeTypeReference(typeof(System.Double))
-        };
-        
-        // widthValueField.Comments.Add(new CodeCommentStatement(
-        //     "The width of the object."));
-        
-        targetClass.Members.Add(enumValue);
-        
+            var type = typesInOrder[i];
+            
+            var enumValue = new CodeMemberField
+            {
+                Attributes = MemberAttributes.Public,
+                Name = type,
+                InitExpression = new CodeSnippetExpression($"1 << {i}")
+            };
+
+            // enumValue.Comments.Add(new CodeCommentStatement($"Corresponding bitmask for {type}"));
+
+            targetClass.Members.Add(enumValue);
+        }
+
+
         targetNamespace.Types.Add(targetClass);
         targetUnit.Namespaces.Add(targetNamespace);
 

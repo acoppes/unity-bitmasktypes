@@ -16,6 +16,10 @@ namespace GeneratedCode
     public enum GeneratedEnum
     {
         
-        FirstValue = 1 << 0,
+        IceDamage = 1 << 0,
+        
+        FireDamage = 1 << 1,
+        
+        PoisonDamage = 1 << 2,
     }
 }
