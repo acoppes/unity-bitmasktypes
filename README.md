@@ -19,7 +19,7 @@ Then, in a class you want a bitmask of that type, you can do the following:
 public class UnitWithDamage : MonoBehaviour
 {
     [TypeMask(typeof(DamageTypeAsset))]
-    public BaseTypeMask movement;
+    public BaseTypeMask damageTypes;
 }
 ```
 
