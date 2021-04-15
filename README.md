@@ -1,3 +1,5 @@
+[![openupm](https://img.shields.io/npm/v/com.gemserk.bitmasktypes?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.gemserk.bitmasktypes/)
+
 # Introduction
 
 The idea with this project is having a way of creating custom enums in editor, by Game Designers for example, and use them internally for fast comparisons as bitmasks.
