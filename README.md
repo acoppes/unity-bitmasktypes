@@ -93,6 +93,13 @@ That will show this in the inspector:
 
 ![Basic example](images/example_using_names2.png?raw=true "Example1")
 
+This works with other enums and even with int fields.
+
+```csharp
+    [EnumName("damages")]
+    public int type3;
+```
+
 # Motivation
 
 When working on Iron Marines, we used bitmasks to speed up units' abilities targeting logic. To do that, we were using c# enums and using them in Unity as flags, like this:
