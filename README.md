@@ -4,7 +4,7 @@
 
 The idea with this project is having a way of creating custom enums in editor, by Game Designers for example, and use them internally for fast comparisons as bitmasks.
 
-## Custom types
+## First Approach: Custom types
 
 Right now, each time a new type is created, the asset importer auto assigns a bitmask to that asset. The bitmask itself isn't important in editor, could change and nothing happens since the users of that asset should referencing the asset itself. 
 
@@ -51,7 +51,7 @@ namespace Gemserk.Examples
 
 So this can be used from code directly. This normally isn't needed since we try to configure everything to depend on assets and then use an int, but sometimes this could be handy, maybe for unit tests, or for editor stuff.
 
-## Custom type names
+## Second Approach: Custom type names
 
 Another option is to just define your types in a generic way in your code and then use custom attribute to optionally override the names in the inspector. This is a clean an simplier way.
 
