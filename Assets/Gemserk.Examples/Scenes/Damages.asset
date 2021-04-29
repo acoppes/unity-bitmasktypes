@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Damages
   m_EditorClassIdentifier: 
   types:
-  - type: 1
-    name: Fire
+  - name: Fire
+  - name: Ice
+  - name: Lightning

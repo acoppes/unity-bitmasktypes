@@ -277,12 +277,12 @@ PrefabInstance:
     - target: {fileID: 8711774492023540340, guid: cfeab20c0a77c40eb8d11feebe196c76,
         type: 3}
       propertyPath: type1
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8711774492023540340, guid: cfeab20c0a77c40eb8d11feebe196c76,
         type: 3}
       propertyPath: type2
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8711774492023540340, guid: cfeab20c0a77c40eb8d11feebe196c76,
         type: 3}

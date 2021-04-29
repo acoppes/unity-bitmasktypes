@@ -11,7 +11,6 @@ namespace Gemserk.BitmaskTypes
         [Serializable]
         public struct TypeName
         {
-            public int type;
             public string name;
         }
 
@@ -20,7 +19,6 @@ namespace Gemserk.BitmaskTypes
         public string[] GetOrderedNames()
         {
             var listCopy = new List<TypeName>(types);
-            listCopy.Sort((a, b) => a.type.CompareTo(b.type));
             return listCopy.Select(n => n.name).ToArray();
         }
     }
