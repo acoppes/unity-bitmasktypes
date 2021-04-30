@@ -16,6 +16,10 @@ namespace Gemserk.BitmaskTypes
 
         public List<TypeName> types;
 
+        public bool generateCode;
+        public string className;
+        public string namespaceName;
+
         public string[] GetOrderedNames()
         {
             var listCopy = new List<TypeName>(types);
