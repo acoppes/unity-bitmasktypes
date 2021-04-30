@@ -16,3 +16,6 @@ MonoBehaviour:
   - name: Fire
   - name: Ice
   - name: Lightning
+  generateCode: 1
+  className: DamageTypes
+  namespaceName: Gemserk.Examples
