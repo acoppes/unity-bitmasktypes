@@ -73,6 +73,8 @@ namespace Gemserk.Examples
 
 So this can be used from code directly. This normally isn't needed since we try to configure everything to depend on assets and then use an int, but sometimes this could be handy, maybe for unit tests, or for editor stuff.
 
+The drawbacks of this approach is we have to depend a lot on Unity assets in code, and also having the iteration to calculate the bitmask.
+
 ## Second Approach: Custom type names
 
 Another option is to just define your types in a generic way in your code and then use custom attribute to optionally override the names in the inspector. This is a clean an simplier way.
@@ -115,10 +117,16 @@ That will show this in the inspector:
 
 <img src="images/example_using_names2.png" alt="drawing" width="400"/>
 
+One good thinga bout enums approach is you can have type checks in compilation time, so you can't misplace a check between ArmorType and DamageType unless you want it and you have to explicitly specify it.
+
 This works with other enums and even with int fields.
 
 ```csharp
     [EnumName("damages")]
     public int type3;
 ```
+
+One good thing of using ints is you don't have to worry about defining all the enum entries, while the enums mode will fail if you define more types in the asset than the enum. 
+
+On drawback is you don't any type in code, you just work with ints, so yo delegate the config to the editor all the time. This could be fixed by autogenerating code with static int list for each defined type maybe. 
 
