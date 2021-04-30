@@ -67,6 +67,21 @@ namespace Gemserk.BitmaskTypes.Editor
                 targetClass.Members.Add(intValue);
             }
 
+            targetClass.Members.Add(new CodeMemberMethod()
+            {
+                Name = "MatchAny",
+                Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                Parameters =
+                {
+                    new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(int)), "a"),
+                    new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(int)), "b")
+                },
+                ReturnType = new CodeTypeReference(typeof(bool)),
+                Statements =
+                {
+                    new CodeSnippetExpression("return (a & b) != 0")
+                }
+            });
 
             targetNamespace.Types.Add(targetClass);
             targetUnit.Namespaces.Add(targetNamespace);
@@ -74,7 +89,7 @@ namespace Gemserk.BitmaskTypes.Editor
             var provider = CodeDomProvider.CreateProvider("CSharp");
             var options = new CodeGeneratorOptions
             {
-                BlankLinesBetweenMembers = false,
+                BlankLinesBetweenMembers = true,
                 BracingStyle = "C",
             };
 
