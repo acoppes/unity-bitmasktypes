@@ -16,5 +16,9 @@ namespace Gemserk.Examples
         public static int Fire = 1 << 0;
         public static int Ice = 1 << 1;
         public static int Lightning = 1 << 2;
+        public static bool MatchAny(int a, int b)
+        {
+            return (a & b) != 0;
+        }
     }
 }

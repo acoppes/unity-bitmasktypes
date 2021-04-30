@@ -128,5 +128,23 @@ This works with other enums and even with int fields.
 
 One good thing of using ints is you don't have to worry about defining all the enum entries, while the enums mode will fail if you define more types in the asset than the enum. 
 
-On drawback is you don't any type in code, you just work with ints, so yo delegate the config to the editor all the time. This could be fixed by autogenerating code with static int list for each defined type maybe. 
+On drawback is you don't any type in code, you just work with ints, so yo delegate the config to the editor all the time. This could be fixed by autogenerating code with static int list for each defined type maybe, like this:
+
+<img src="images/example_using_names5.png" alt="drawing" width="400"/>
+
+Which will generate this code:
+
+```csharp
+namespace Gemserk.Examples
+{
+    
+    public class DamageTypes
+    {
+        public static int Fire = 1 << 0;
+        public static int Ice = 1 << 1;
+        public static int Lightning = 1 << 2;
+    }
+}
+```
+
 
