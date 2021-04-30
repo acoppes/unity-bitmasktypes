@@ -109,8 +109,8 @@ In this case, you can create an `EnumNameTypeAsset` asset to override the names,
 And then, configure code attribute when using the type:
 
 ```csharp
-    [EnumName("damages")]
-    public ArmorType type1;
+[EnumName("damages")]
+public ArmorType type1;
 ```
 
 That will show this in the inspector:
@@ -122,8 +122,8 @@ One good thinga bout enums approach is you can have type checks in compilation t
 This works with other enums and even with int fields.
 
 ```csharp
-    [EnumName("damages")]
-    public int type3;
+[EnumName("damages")]
+public int type3;
 ```
 
 One good thing of using ints is you don't have to worry about defining all the enum entries, while the enums mode will fail if you define more types in the asset than the enum. 
