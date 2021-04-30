@@ -29,7 +29,7 @@ Here you declare a field of type BaseTypeMask, and say the type you want is of t
 
 In editor, it looks like this:
 
-![An example of how it looks in the editor](images/example1.png?raw=true "Example1")
+<img src="images/example1.png" alt="drawing" width="400"/>
 
 ### Code autogeneration
 
@@ -76,11 +76,11 @@ public enum ArmorType
 
 The inspector will normally draw it as:
 
-![Basic example](images/example_using_names4.png?raw=true "Example1")
+<img src="images/example_using_names4.png" alt="drawing" width="400"/>
 
 In this case, you can create an `EnumNameTypeAsset` asset to override the names, as it follow:
 
-![Basic example](images/example_using_names1.png?raw=true "Example1")
+<img src="images/example_using_names1.png" alt="drawing" width="400"/>
 
 And then, configure code attribute when using the type:
 
@@ -91,7 +91,7 @@ And then, configure code attribute when using the type:
 
 That will show this in the inspector:
 
-![Basic example](images/example_using_names2.png?raw=true "Example1")
+<img src="images/example_using_names2.png" alt="drawing" width="400"/>
 
 This works with other enums and even with int fields.
 
