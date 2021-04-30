@@ -100,11 +100,11 @@ public enum ArmorType
 
 The inspector will normally draw it as:
 
-<img src="images/example_using_names4.png" alt="drawing" width="400"/>
+<img src="images~/example_using_names4.png" alt="drawing" width="400"/>
 
 In this case, you can create an `EnumNameTypeAsset` asset to override the names, as it follow:
 
-<img src="images/example_using_names1.png" alt="drawing" width="400"/>
+<img src="images~/example_using_names1.png" alt="drawing" width="400"/>
 
 And then, configure code attribute when using the type:
 
@@ -115,7 +115,7 @@ public ArmorType type1;
 
 That will show this in the inspector:
 
-<img src="images/example_using_names2.png" alt="drawing" width="400"/>
+<img src="images~/example_using_names2.png" alt="drawing" width="400"/>
 
 One good thinga bout enums approach is you can have type checks in compilation time, so you can't misplace a check between ArmorType and DamageType unless you want it and you have to explicitly specify it.
 
@@ -130,7 +130,7 @@ One good thing of using ints is you don't have to worry about defining all the e
 
 On drawback is you don't any type in code, you just work with ints, so yo delegate the config to the editor all the time. This could be fixed by autogenerating code with static int list for each defined type maybe, like this:
 
-<img src="images/example_using_names5.png" alt="drawing" width="400"/>
+<img src="images~/example_using_names5.png" alt="drawing" width="400"/>
 
 Which will generate this code:
 
@@ -147,4 +147,7 @@ namespace Gemserk.Examples
 }
 ```
 
+## TODO
 
+* Ifdef to avoid code if no library found
+* Flag groups like FireDamages = Fire | Ignite
