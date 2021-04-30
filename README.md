@@ -4,6 +4,28 @@
 
 The idea with this project is having a way of creating custom enums in editor, by Game Designers for example, and use them internally for fast comparisons as bitmasks.
 
+# Motivation
+
+When working on Iron Marines at Ironhide, we used bitmasks to speed up units' abilities targeting logic. To do that, we were using c# Enums with Flags Attribute, like this:
+
+```csharp
+[Flags]
+public enum TargetType
+{
+    Unit = 1 << 0,
+    Structure = 1 << 1,
+    Vehicle = 1 << 2
+}
+```
+
+Using this approach, we can configure them in Unity's Editor by selecting the flags we want, and then we just compare using bitwise operations to check if a target matches the ability targeting. 
+
+This works pretty well internally but it has one limitation, it is not so easy for the Game Designers to extend it since they have to know it is used internally as bitmask and they don't care about it.
+
+There is also another problem, extending it by code couples the Enum definition to a specific game instead of keeping the core engine decoupled to be easily reused.
+
+So the focus here is to keep the base concepts coupled to the core engine while leaving the values to the Game Designers, and if they want, different on each game.
+
 ## First Approach: Custom types
 
 Right now, each time a new type is created, the asset importer auto assigns a bitmask to that asset. The bitmask itself isn't important in editor, could change and nothing happens since the users of that asset should referencing the asset itself. 
@@ -100,24 +122,3 @@ This works with other enums and even with int fields.
     public int type3;
 ```
 
-# Motivation
-
-When working on Iron Marines, we used bitmasks to speed up units' abilities targeting logic. To do that, we were using c# enums and using them in Unity as flags, like this:
-
-```csharp
-[Flags]
-public enum TargetType
-{
-    Unit = 1 << 0,
-    Structure = 1 << 1,
-    Vehicle = 1 << 2
-}
-```
-
-So we could configure in editor by selecting the flags we wanted, and then we just compared using bitwise operations to check if a target matches the ability targeting parameters. This works pretty well internally, but at some point I wanted to delegate to the Game Designer team the decision of which enums they wanted for the game and at the same time, hide the fact that internally we need them to be bitmasks.
-
-I wanted the base concepts to be part of the engine, like for example the `damage type`, but the values to be part of the game using the core engine, like having `ice damage type` it might be useful for one game, but for another it makes no sense, wanted a way to decouple the final values from the core engine.
-
-Not sure if this is the right approach, I am just exploring some ideas.
-
-Another idea could've just been to use ints in the core engine and enums in the game using the engine, but for don't know how to link the two in the unity inspector and show an enum mask popup when editing the int from the core engine without having to add game related metadata in the core engine itself.
