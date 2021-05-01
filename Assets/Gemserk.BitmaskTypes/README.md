@@ -77,6 +77,8 @@ The drawbacks of this approach is we have to depend a lot on Unity assets in cod
 
 Another option is to just define your types in a generic way in your code and then use custom attribute to optionally override the names in the inspector. This is a clean an simplier way.
 
+NOTE: this is the only approach distributed in the package.
+
 For example, for the following type:
 
 ```csharp
