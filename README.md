@@ -144,8 +144,3 @@ namespace Gemserk.Examples
     }
 }
 ```
-
-## TODO
-
-* Autogenerate code on asset saved
-* Ifdef to avoid code if no library found
