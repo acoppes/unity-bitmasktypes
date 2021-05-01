@@ -11,11 +11,28 @@
 namespace Gemserk.Examples
 {
     
+    
     public class DamageTypes
     {
+        
         public static int Fire = 1 << 0;
+        
         public static int Ice = 1 << 1;
-        public static int Lightning = 1 << 2;
+        
+        public static int Cold = 1 << 2;
+        
+        public static int Lightning = 1 << 3;
+        
+        public static int Shocking = 1 << 4;
+        
+        public static int Electric = 1 << 5;
+        
+        public static int BaseDamages = Ice | Cold | Lightning;
+        
+        public static int IceDamages = Cold | Lightning;
+        
+        public static int ElectricDamages = Shocking | Electric;
+        
         public static bool MatchAny(int a, int b)
         {
             return (a & b) != 0;

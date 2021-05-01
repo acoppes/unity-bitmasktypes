@@ -34,5 +34,22 @@ namespace Gemserk.BitmaskTypes
             var listCopy = new List<TypeName>(types);
             return listCopy.Select(n => n.name).ToArray();
         }
+        
+        public List<TypeName> GetMaskTypes(int value)
+        {
+            var list = new List<TypeName>();
+            
+            for (var i = 0; i < types.Count; i++)
+            {
+                var type = types[i];
+                
+                if (((1 << i) & value) != 0)
+                {
+                    list.Add(type);
+                }
+            }
+
+            return list;
+        }
     }
 }

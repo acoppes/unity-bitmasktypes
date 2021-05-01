@@ -1,10 +1,8 @@
 [![openupm](https://img.shields.io/npm/v/com.gemserk.bitmasktypes?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.gemserk.bitmasktypes/)
 
-# Introduction
-
 The idea with this project is having a way of creating custom enums in editor, by Game Designers for example, and use them internally for fast comparisons as bitmasks.
 
-# Motivation
+## Motivation
 
 When working on Iron Marines at Ironhide, we used bitmasks to speed up units' abilities targeting logic. To do that, we were using c# Enums with Flags Attribute, like this:
 
@@ -51,7 +49,7 @@ Here you declare a field of type BaseTypeMask, and say the type you want is of t
 
 In editor, it looks like this:
 
-<img src="images/example1.png" alt="drawing" width="400"/>
+<img src="images~/example1.png" alt="drawing" width="400"/>
 
 ### Code autogeneration
 
@@ -149,5 +147,5 @@ namespace Gemserk.Examples
 
 ## TODO
 
+* Autogenerate code on asset saved
 * Ifdef to avoid code if no library found
-* Flag groups like FireDamages = Fire | Ignite

@@ -23,9 +23,9 @@ MonoBehaviour:
   - name: Shocking
   - name: Electric
   groupTypes:
-  - name: Base Damages
+  - name: BaseDamages
     value: 14
-  - name: Ice Damages
+  - name: IceDamages
     value: 12
-  - name: Electric Damages
+  - name: ElectricDamages
     value: 112
