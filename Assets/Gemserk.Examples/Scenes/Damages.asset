@@ -24,8 +24,8 @@ MonoBehaviour:
   - name: Electric
   groupTypes:
   - name: BaseDamages
-    value: 14
+    value: 11
   - name: IceDamages
-    value: 12
+    value: 14
   - name: ElectricDamages
     value: 112

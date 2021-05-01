@@ -27,9 +27,9 @@ namespace Gemserk.Examples
         
         public static int Electric = 1 << 5;
         
-        public static int BaseDamages = Ice | Cold | Lightning;
+        public static int BaseDamages = Fire | Ice | Lightning;
         
-        public static int IceDamages = Cold | Lightning;
+        public static int IceDamages = Ice | Cold | Lightning;
         
         public static int ElectricDamages = Shocking | Electric;
         
