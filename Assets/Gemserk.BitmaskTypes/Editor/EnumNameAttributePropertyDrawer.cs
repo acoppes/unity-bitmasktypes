@@ -9,8 +9,10 @@ namespace Gemserk.BitmaskTypes.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             var enumNameAttribute = attribute as EnumNameAttribute;
+            
+            // TODO: add also groups as options...
 
-            var assets = AssetDatabase.FindAssets($"t:{typeof(EnumNameTypeAsset).Name} {enumNameAttribute.namesAsset}");
+            var assets = AssetDatabase.FindAssets($"t:{nameof(EnumNameTypeAsset)} {enumNameAttribute.namesAsset}");
             if (assets.Length == 0)
             {
                 EditorGUI.PropertyField(position, property, label);
