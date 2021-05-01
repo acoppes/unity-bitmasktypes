@@ -12,10 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023e575935a64dacb33d63ccffe624f7, type: 3}
   m_Name: Damages
   m_EditorClassIdentifier: 
-  types:
-  - name: Fire
-  - name: Ice
-  - name: Lightning
   generateCode: 1
   className: DamageTypes
   namespaceName: Gemserk.Examples
+  types:
+  - name: Fire
+  - name: Ice
+  - name: Cold
+  - name: Lightning
+  - name: Shocking
+  - name: Electric
+  groupTypes:
+  - name: Base Damages
+    value: 14
+  - name: Ice Damages
+    value: 12
+  - name: Electric Damages
+    value: 112

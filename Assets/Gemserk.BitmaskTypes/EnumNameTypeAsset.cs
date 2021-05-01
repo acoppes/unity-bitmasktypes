@@ -13,12 +13,21 @@ namespace Gemserk.BitmaskTypes
         {
             public string name;
         }
-
-        public List<TypeName> types;
+        
+        [Serializable]
+        public struct GroupTypeName
+        {
+            public string name;
+            // [EnumName("damages")]
+            public int value;
+        }        
 
         public bool generateCode;
         public string className;
         public string namespaceName;
+        
+        public List<TypeName> types;
+        public List<GroupTypeName> groupTypes;
 
         public string[] GetOrderedNames()
         {
