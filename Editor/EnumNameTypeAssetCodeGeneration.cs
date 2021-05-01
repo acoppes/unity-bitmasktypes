@@ -40,23 +40,6 @@ namespace Gemserk.BitmaskTypes.Editor
             }
         }
 
-        private static List<EnumNameTypeAsset.TypeName> GetMaskTypes(List<EnumNameTypeAsset.TypeName> types, int value)
-        {
-            var list = new List<EnumNameTypeAsset.TypeName>();
-            
-            for (var i = 0; i < types.Count; i++)
-            {
-                var type = types[i];
-                
-                if (((1 << i) & value) != 0)
-                {
-                    list.Add(type);
-                }
-            }
-
-            return list;
-        }
-
         private static void GenerateEnumNamesCode(EnumNameTypeAsset enumNameTypeAsset, string targetFolder)
         {
             var targetUnit = new CodeCompileUnit();
@@ -87,10 +70,11 @@ namespace Gemserk.BitmaskTypes.Editor
             for (var i = 0; i < enumNameTypeAsset.groupTypes.Count; i++)
             {
                 var groupType = enumNameTypeAsset.groupTypes[i];
-                var groupTypes = enumNameTypeAsset.GetMaskTypes(groupType.value);
-
-                var strings = groupTypes.Select(t => t.name).ToArray();
-                var value = string.Join(" | ", strings);
+                var value = enumNameTypeAsset.MaskToString(groupType.value);
+                
+                // var groupTypes = enumNameTypeAsset.GetMaskTypes(groupType.value);
+                // var strings = groupTypes.Select(t => t.name).ToArray();
+                // var value = string.Join(" | ", strings);
 
                 var intValue = new CodeMemberField
                 {

@@ -18,7 +18,6 @@ namespace Gemserk.BitmaskTypes
         public struct GroupTypeName
         {
             public string name;
-            // [EnumName("damages")]
             public int value;
         }        
 
@@ -35,21 +34,16 @@ namespace Gemserk.BitmaskTypes
             return listCopy.Select(n => n.name).ToArray();
         }
         
-        public List<TypeName> GetMaskTypes(int value)
+        public IEnumerable<TypeName> GetMaskTypes(int value)
         {
-            var list = new List<TypeName>();
-            
-            for (var i = 0; i < types.Count; i++)
-            {
-                var type = types[i];
-                
-                if (((1 << i) & value) != 0)
-                {
-                    list.Add(type);
-                }
-            }
+            return types.Where((type, i) => ((1 << i) & value) != 0).ToList();
+        }
 
-            return list;
+        public string MaskToString(int value)
+        {
+            var maskTypes = GetMaskTypes(value);
+            var strings = maskTypes.Select(t => t.name).ToArray();
+            return string.Join(" | ", strings);
         }
     }
 }
