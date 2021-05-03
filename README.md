@@ -1,8 +1,8 @@
-# Introduction
+[![openupm](https://img.shields.io/npm/v/com.gemserk.bitmasktypes?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.gemserk.bitmasktypes/)
 
 The idea with this project is having a way of creating custom enums in editor, by Game Designers for example, and use them internally for fast comparisons as bitmasks.
 
-# Motivation
+## Motivation
 
 When working on Iron Marines at Ironhide, we used bitmasks to speed up units' abilities targeting logic. To do that, we were using c# Enums with Flags Attribute, like this:
 
@@ -24,7 +24,81 @@ There is also another problem, extending it by code couples the Enum definition 
 
 So the focus here is to keep the base concepts coupled to the core engine while leaving the values to the Game Designers, and if they want, different on each game.
 
-## First Approach: Custom types
+## Main approach: custom property to override maskfield names
+
+The main option is to just define your types in a generic way in your code and then use property attribute to override the names shown in the inspector. This is a clean an simpler way.
+
+For example, for the following enum:
+
+```csharp
+[Flags]
+public enum ArmorType
+{
+    Nothing = 0,
+    Everything = -1,
+    Type0 = 1 << 0,
+    Type1 = 1 << 1,
+    Type2 = 1 << 2,
+    Type3 = 1 << 3,
+    Type4 = 1 << 4,
+    Type5 = 1 << 5,
+    Type6 = 1 << 6,
+    Type7 = 1 << 7
+}
+```
+
+Will be draw in the inspector as:
+
+<img src="images~/example_using_names4.png" alt="drawing" width="400"/>
+
+In this case, by creating an `EnumNameTypeAsset` asset as it follow:
+
+<img src="images~/example_using_names1.png" alt="drawing" width="400"/>
+
+And then, configuring a field attribute:
+
+```csharp
+[EnumName("damages")]
+public ArmorType type1;
+```
+
+Then, the inspector will show this:
+
+<img src="images~/example_using_names2.png" alt="drawing" width="400"/>
+
+One good thing about enums approach is you can have type checks in compilation time, so you can't misplace a check between ArmorType and DamageType unless you want it and you have to explicitly do it by casting to the other enum.
+
+### Using it with int fields
+
+This approach can be used with int fields too:
+
+```csharp
+[EnumName("damages")]
+public int type3;
+```
+
+One good thing of using ints is you don't have to worry about defining all the enum entries, while the enums mode will fail if you define more types in the asset than the enum. 
+
+One drawback is you don't any type in code, you just work with ints, so you delegate the config to the editor all the time. This could be fixed by autogenerating code with static int list for each defined type maybe, like this:
+
+<img src="images~/example_using_names5.png" alt="drawing" width="400"/>
+
+Which will generate this code:
+
+```csharp
+namespace Gemserk.Examples
+{
+    
+    public class DamageTypes
+    {
+        public static int Fire = 1 << 0;
+        public static int Ice = 1 << 1;
+        public static int Lightning = 1 << 2;
+    }
+}
+```
+
+## Another approach using assets (not distributed in package)
 
 Right now, each time a new type is created, the asset importer auto assigns a bitmask to that asset. The bitmask itself isn't important in editor, could change and nothing happens since the users of that asset should referencing the asset itself. 
 
@@ -72,79 +146,3 @@ namespace Gemserk.Examples
 So this can be used from code directly. This normally isn't needed since we try to configure everything to depend on assets and then use an int, but sometimes this could be handy, maybe for unit tests, or for editor stuff.
 
 The drawbacks of this approach is we have to depend a lot on Unity assets in code, and also having the iteration to calculate the bitmask.
-
-## Second Approach: Custom type names
-
-Another option is to just define your types in a generic way in your code and then use custom attribute to optionally override the names in the inspector. This is a clean an simplier way.
-
-NOTE: this is the only approach distributed in the package.
-
-For example, for the following type:
-
-```csharp
-[Flags]
-public enum ArmorType
-{
-    Nothing = 0,
-    Everything = -1,
-    Type0 = 1 << 0,
-    Type1 = 1 << 1,
-    Type2 = 1 << 2,
-    Type3 = 1 << 3,
-    Type4 = 1 << 4,
-    Type5 = 1 << 5,
-    Type6 = 1 << 6,
-    Type7 = 1 << 7
-}
-```
-
-The inspector will normally draw it as:
-
-<img src="images~/example_using_names4.png" alt="drawing" width="400"/>
-
-In this case, you can create an `EnumNameTypeAsset` asset to override the names, as it follow:
-
-<img src="images~/example_using_names1.png" alt="drawing" width="400"/>
-
-And then, configure code attribute when using the type:
-
-```csharp
-[EnumName("damages")]
-public ArmorType type1;
-```
-
-That will show this in the inspector:
-
-<img src="images~/example_using_names2.png" alt="drawing" width="400"/>
-
-One good thinga bout enums approach is you can have type checks in compilation time, so you can't misplace a check between ArmorType and DamageType unless you want it and you have to explicitly specify it.
-
-This works with other enums and even with int fields.
-
-```csharp
-[EnumName("damages")]
-public int type3;
-```
-
-One good thing of using ints is you don't have to worry about defining all the enum entries, while the enums mode will fail if you define more types in the asset than the enum. 
-
-On drawback is you don't any type in code, you just work with ints, so yo delegate the config to the editor all the time. This could be fixed by autogenerating code with static int list for each defined type maybe, like this:
-
-<img src="images~/example_using_names5.png" alt="drawing" width="400"/>
-
-Which will generate this code:
-
-```csharp
-namespace Gemserk.Examples
-{
-    
-    public class DamageTypes
-    {
-        public static int Fire = 1 << 0;
-        public static int Ice = 1 << 1;
-        public static int Lightning = 1 << 2;
-    }
-}
-```
-
-
