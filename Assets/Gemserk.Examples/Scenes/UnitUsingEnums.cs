@@ -11,7 +11,7 @@ namespace Gemserk.Examples
         
         public ArmorType type2;
 
-        [EnumName("damages")]
+        [EnumName("armors")]
         public int type3;
 
         [ContextMenu("Override with type2")]
