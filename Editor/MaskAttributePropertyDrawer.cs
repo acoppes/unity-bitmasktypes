@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,34 +9,25 @@ namespace Gemserk.BitmaskTypes.Editor
     {
         private float heightPerProperty = 19;
 
-        private static string[] maskNames =
+        private static readonly string[] maskNames =
         {
-            "Type0",
-            "Type1",
+            "Type0","Type1","Type2","Type3","Type4","Type5","Type6","Type7",
+            "Type8","Type9","Type10","Type11","Type12","Type13","Type14","Type15",
+            "Type16","Type17","Type18","Type19","Type20","Type21","Type22","Type23",
+            "Type24","Type25","Type26","Type27","Type28","Type29","Type30","Type31",
         };
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             var maskAttribute = attribute as MaskAttribute;
 
-            // var assets = AssetDatabase.FindAssets($"t:{nameof(EnumNameTypeAsset)} {enumNameAttribute.namesAsset}");
-            // if (assets.Length == 0)
+            var names = maskNames.Take(maskAttribute.bytes * 8).ToArray();
+            
+            // if (names.Length == 0)
             // {
             //     EditorGUI.PropertyField(position, property, label);
             //     return;
             // }
-
-            // var typeAsset = AssetDatabase.LoadAssetAtPath<EnumNameTypeAsset>(AssetDatabase.GUIDToAssetPath(assets[0]));
-            //
-            // var names = typeAsset.GetOrderedNames();
-
-            var names = maskNames;
-            
-            if (names.Length == 0)
-            {
-                EditorGUI.PropertyField(position, property, label);
-                return;
-            }
 
             position.height = heightPerProperty;
 
@@ -48,46 +38,10 @@ namespace Gemserk.BitmaskTypes.Editor
             {
                 property.intValue = newValue;
             }
-
-            // if (typeAsset.groupTypes.Count > 0)
-            // {
-            //     EditorGUI.BeginChangeCheck();
-            //     position.x += 20;
-            //     position.width -= 20;
-            //     position.y += heightPerProperty;
-            //
-            //     var options = new List<string>
-            //     {
-            //         // "Click to select"
-            //     };
-            //     
-            //     options.AddRange(typeAsset.groupTypes.Select(g => g.name));
-            //     
-            //     var content = new GUIContent($"Preconfigured {typeAsset.name}", $"Overrides value with preconfigured bitmask {typeAsset.name}");
-            //     var group = EditorGUI.Popup(position, content, -1, options.Select(g => new GUIContent(g)).ToArray());
-            //
-            //     if (EditorGUI.EndChangeCheck())
-            //     {
-            //         var groupType = typeAsset.groupTypes[group];
-            //         property.intValue = groupType.value;
-            //     }
-            // }
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var maskAttribute = attribute as MaskAttribute;
-            
-            // var assets = AssetDatabase.FindAssets($"t:{nameof(EnumNameTypeAsset)} {enumNameAttribute.namesAsset}");
-            // if (assets.Length == 0)
-            // {
-            //     return base.GetPropertyHeight(property, label);
-            // }
-
-            // var typeAsset = AssetDatabase.LoadAssetAtPath<EnumNameTypeAsset>(AssetDatabase.GUIDToAssetPath(assets[0]));
-            //
-            // var names = typeAsset.GetOrderedNames();
-            
             var names = maskNames;
 
             if (names.Length == 0)
@@ -96,11 +50,6 @@ namespace Gemserk.BitmaskTypes.Editor
             }
 
             return heightPerProperty;
-            
-            // if (typeAsset.groupTypes.Count == 0)
-            //     return heightPerProperty;
-            //
-            // return heightPerProperty * 2;
         }
 
         public override bool CanCacheInspectorGUI(SerializedProperty property)
