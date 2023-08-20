@@ -1,6 +1,6 @@
 {
   "name": "com.gemserk.bitmasktypes",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "displayName": "Unity Bitmask Types by Gemserk",
   "description": "Unity Bitmask Types https://github.com/acoppes/unity-bitmasktypes",
   "unity": "2020.3",
