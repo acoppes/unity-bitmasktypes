@@ -79,7 +79,21 @@ public int type3;
 
 One good thing of using ints is you don't have to worry about defining all the enum entries, while the enums mode will fail if you define more types in the asset than the enum. 
 
-One drawback is you don't any type in code, you just work with ints, so you delegate the config to the editor all the time. 
+One drawback is you don't have any type in code, you just work with ints, so you delegate the config to the editor all the time. 
+
+### BitMask Attribute
+
+Another approach is to use a generic BitMask attribute to let you select a bitmask in editor while still using ints (or similar) in code.
+
+```csharp
+[BitMask]
+public int type1;
+
+[BitMask(32)]
+public int type2;
+```
+
+The first one allows selecting a bitmask of 8 bits while the second can select from 32 bits.
 
 ### Code generation
 
