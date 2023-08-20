@@ -14,6 +14,9 @@ namespace Gemserk.Examples
         [EnumName("armors")]
         public int type3;
 
+        [Mask]
+        public int type4Masked;
+
         [ContextMenu("Override with type2")]
         private void OverrideWithType2()
         {
