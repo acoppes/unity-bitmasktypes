@@ -14,13 +14,13 @@ namespace Gemserk.Examples
         [EnumName("armors")]
         public int type3;
 
-        [Mask]
+        [BitMask]
         public int type4Masked;
         
-        [Mask(2)]
+        [BitMask(16)]
         public int type5Masked;
         
-        [Mask(4)]
+        [BitMask(32)]
         public int type6Masked;
 
         [ContextMenu("Override with type2")]

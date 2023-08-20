@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Gemserk.BitmaskTypes.Editor
 {
-    [CustomPropertyDrawer(typeof(MaskAttribute))]
-    public class MaskAttributePropertyDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(BitMaskAttribute))]
+    public class BitMaskAttributePropertyDrawer : PropertyDrawer
     {
         private float heightPerProperty = 19;
 
@@ -19,9 +19,16 @@ namespace Gemserk.BitmaskTypes.Editor
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var maskAttribute = attribute as MaskAttribute;
+            var maskAttribute = attribute as BitMaskAttribute;
 
-            var names = maskNames.Take(maskAttribute.bytes * 8).ToArray();
+            var bits = 8;
+
+            if (maskAttribute != null)
+            {
+                bits = maskAttribute.bits;
+            }
+
+            var names = maskNames.Take(bits).ToArray();
             
             // if (names.Length == 0)
             // {
