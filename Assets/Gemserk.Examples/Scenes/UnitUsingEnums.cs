@@ -16,6 +16,12 @@ namespace Gemserk.Examples
 
         [Mask]
         public int type4Masked;
+        
+        [Mask(2)]
+        public int type5Masked;
+        
+        [Mask(4)]
+        public int type6Masked;
 
         [ContextMenu("Override with type2")]
         private void OverrideWithType2()

@@ -48,3 +48,5 @@ MonoBehaviour:
   type2: 3
   type3: 6
   type4Masked: 1
+  type5Masked: 1024
+  type6Masked: 1073741824
