@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5013196ff02a4fc6b87cca0033f44bab, type: 3}
+  m_Name: Damages
+  m_EditorClassIdentifier: 
+  types:
+  - {fileID: 11400000, guid: 947944857c4e3844e8bc118066b5d182, type: 2}
+  - {fileID: 11400000, guid: 93c20faacd9979648adefaac1ea46846, type: 2}
+  - {fileID: 11400000, guid: 4483a34d9bf93e648b0211a8e35fc37c, type: 2}
+  generateCode: 1
+  className: Damages
+  namespaceName: Gemserk.Examples
+  outputFolder: Gemserk.ExamplesCore

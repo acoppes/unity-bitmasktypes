@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8661c98218a47e18dd7cc29d4ceadd0, type: 3}
-  m_Name: Damages_Ranged
+  m_Name: Thorn
   m_EditorClassIdentifier: 
-  type: 1
+  type: 4
