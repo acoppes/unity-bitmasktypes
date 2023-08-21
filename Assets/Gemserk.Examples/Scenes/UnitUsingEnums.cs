@@ -23,6 +23,10 @@ namespace Gemserk.Examples
         [BitMask(32)]
         public int type6Masked;
 
+        public GenericTypeAsset myType;
+
+        public GenericBitMask mask;
+
         [ContextMenu("Override with type2")]
         private void OverrideWithType2()
         {
