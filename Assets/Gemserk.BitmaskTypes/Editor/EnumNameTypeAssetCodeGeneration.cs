@@ -1,6 +1,7 @@
 using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -172,12 +173,28 @@ namespace Gemserk.BitmaskTypes.Editor
                 nameOfValueStaticMethod.Statements.Add(new CodeSnippetExpression($"if (value == {t.name}) return nameof({t.name})"));
             });
             nameOfValueStaticMethod.Statements.Add(new CodeSnippetExpression("return null"));
-
-            // var nameOfSnippets = asset.types
-            //     .Select(t => new CodeSnippetExpression($"if (value == {t.name}) return nameof({t.name})")).ToList();
-            // nameOfSnippets.Add(new CodeSnippetExpression("return null"));
             
             targetClass.Members.Add(nameOfValueStaticMethod);
+            
+            var getNamesStaticMethod = new CodeMemberMethod()
+            {
+                Name = "GetNames",
+                Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                Parameters =
+                {
+                    new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(int)), "mask"),
+                    new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(ICollection<string>)), "collection")
+                },
+                // ReturnType = new CodeTypeReference(typeof(void))
+            };
+
+            asset.types.ForEach(t =>
+            {
+               //  new CodeConditionStatement(new CodeExpression(), new CodeSnippetStatement());
+                getNamesStaticMethod.Statements.Add(new CodeSnippetExpression($"if ((mask & {t.name}) == {t.name}) collection.Add(nameof({t.name}))"));
+            });
+            
+            targetClass.Members.Add(getNamesStaticMethod);
 
             targetNamespace.Types.Add(targetClass);
             targetUnit.Namespaces.Add(targetNamespace);

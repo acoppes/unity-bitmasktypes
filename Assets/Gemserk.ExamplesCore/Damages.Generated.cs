@@ -31,5 +31,13 @@ namespace Gemserk.Examples
             if (value == Poison) return nameof(Poison);
             return null;
         }
+        
+        public static void GetNames(int mask, System.Collections.Generic.ICollection<string> collection)
+        {
+            if ((mask & Melee) == Melee) collection.Add(nameof(Melee));
+            if ((mask & Ranged) == Ranged) collection.Add(nameof(Ranged));
+            if ((mask & Thorn) == Thorn) collection.Add(nameof(Thorn));
+            if ((mask & Poison) == Poison) collection.Add(nameof(Poison));
+        }
     }
 }
