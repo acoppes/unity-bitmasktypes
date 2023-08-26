@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace Gemserk.BitmaskTypes.Editor
 {
-    [CustomEditor(typeof(GenericTypeCategoryAsset))]
+    [CustomEditor(typeof(TypeSetAsset))]
     public class GenericTypeCategoryAssetCustomEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
-            var categoryAsset = target as GenericTypeCategoryAsset;
+            var categoryAsset = target as TypeSetAsset;
             
             if (categoryAsset.generateCode)
             {
