@@ -142,14 +142,15 @@ namespace Gemserk.BitmaskTypes.Editor
             for (var i = 0; i < asset.types.Count; i++)
             {
                 var type = asset.types[i];
+                var shiftValue = (int) Math.Round(Math.Log(type.type, 2));
             
                 var intValue = new CodeMemberField
                 {
                     Attributes = MemberAttributes.Public | MemberAttributes.Static,
                     Name = type.name,
                     Type = new CodeTypeReference(typeof(int)),
-                    // InitExpression = new CodeSnippetExpression($"1 << {i}")
-                    InitExpression = new CodeSnippetExpression($"{type.type}")
+                    InitExpression = new CodeSnippetExpression($"1 << {shiftValue}")
+                    // InitExpression = new CodeSnippetExpression($"{type.type}")
                 };
 
                 targetClass.Members.Add(intValue);
