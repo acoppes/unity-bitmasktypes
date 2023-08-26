@@ -136,7 +136,7 @@ namespace Gemserk.BitmaskTypes.Editor
             var targetClass = new CodeTypeDeclaration(asset.className)
             {
                 TypeAttributes = TypeAttributes.Public,
-                IsPartial = true
+                IsPartial = asset.partialClass
             };
 
             for (var i = 0; i < asset.types.Count; i++)
@@ -182,7 +182,12 @@ namespace Gemserk.BitmaskTypes.Editor
                 BracingStyle = "C",
             };
 
-            var generatedClassFile = $"{asset.className}.Generated.cs";
+            var generatedClassFile = $"{asset.className}.cs";
+
+            if (asset.appendGeneratedToFileName)
+            {
+                generatedClassFile = $"{asset.className}.Generated.cs";
+            }
         
             if (!Directory.Exists(targetFolder))
             {

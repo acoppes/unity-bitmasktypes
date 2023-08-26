@@ -20,5 +20,7 @@ namespace Gemserk.Examples
         public static int Ranged = 1 << 0;
         
         public static int Thorn = 1 << 2;
+        
+        public static int Poison = 1 << 3;
     }
 }
