@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Gemserk.BitmaskTypes.Editor
 {
     [CustomEditor(typeof(TypeSetAsset))]
-    public class GenericTypeCategoryAssetCustomEditor : UnityEditor.Editor
+    public class TypeSetAssetCustomEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -29,7 +29,7 @@ namespace Gemserk.BitmaskTypes.Editor
                         folder = Path.Combine(Application.dataPath, categoryAsset.outputFolder);
                     }
                     
-                    EnumNameTypeAssetCodeGeneration.GenerateGenericTypeCategoryClass(categoryAsset, folder);
+                    EnumNameTypeAssetCodeGeneration.GenerateTypeSetClass(categoryAsset, folder);
                 }
             }
 
