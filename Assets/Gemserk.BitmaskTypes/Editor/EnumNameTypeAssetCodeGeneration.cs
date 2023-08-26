@@ -143,14 +143,13 @@ namespace Gemserk.BitmaskTypes.Editor
             for (var i = 0; i < asset.types.Count; i++)
             {
                 var type = asset.types[i];
-                var shiftValue = (int) Math.Round(Math.Log(type.type, 2));
             
                 var intValue = new CodeMemberField
                 {
                     Attributes = MemberAttributes.Public | MemberAttributes.Static,
                     Name = type.name,
                     Type = new CodeTypeReference(typeof(int)),
-                    InitExpression = new CodeSnippetExpression($"1 << {shiftValue}")
+                    InitExpression = new CodeSnippetExpression(type.GetCodeRepresentation())
                     // InitExpression = new CodeSnippetExpression($"{type.type}")
                 };
 
@@ -191,7 +190,14 @@ namespace Gemserk.BitmaskTypes.Editor
             asset.types.ForEach(t =>
             {
                //  new CodeConditionStatement(new CodeExpression(), new CodeSnippetStatement());
-                getNamesStaticMethod.Statements.Add(new CodeSnippetExpression($"if ((mask & {t.name}) == {t.name}) collection.Add(nameof({t.name}))"));
+               if (t is IntTypeAsset)
+               {
+                   getNamesStaticMethod.Statements.Add(new CodeSnippetExpression($"if ((mask & (1 << {t.name})) == (1 << {t.name})) collection.Add(nameof({t.name}))"));
+               } else if (t is BitmaskTypeAsset b)
+               {
+                   getNamesStaticMethod.Statements.Add(new CodeSnippetExpression($"if ((mask & {t.name}) == {t.name}) collection.Add(nameof({t.name}))"));
+               }
+                
             });
             
             targetClass.Members.Add(getNamesStaticMethod);

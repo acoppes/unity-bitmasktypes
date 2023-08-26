@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8661c98218a47e18dd7cc29d4ceadd0, type: 3}
-  m_Name: Ranged_Fire
+  m_Script: {fileID: 11500000, guid: ac17fecc215b452f93ac40cb87d894fa, type: 3}
+  m_Name: Test
   m_EditorClassIdentifier: 
-  type: 16
+  value: 15

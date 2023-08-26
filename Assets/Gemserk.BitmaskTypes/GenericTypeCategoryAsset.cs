@@ -6,7 +6,7 @@ namespace Gemserk.BitmaskTypes
     [CreateAssetMenu(menuName = "Gemserk/Generic Type Category")]
     public class GenericTypeCategoryAsset : ScriptableObject
     {
-        public List<GenericTypeAsset> types;
+        public List<BaseIntTypeAsset> types;
         
         public bool generateCode;
         
@@ -24,7 +24,7 @@ namespace Gemserk.BitmaskTypes
                 if (type == null)
                     continue;
 
-                if (type.type == value)
+                if (type.Match(value))
                     return type.name;
             }
 
@@ -38,7 +38,9 @@ namespace Gemserk.BitmaskTypes
                 if (type == null)
                     continue;
 
-                if ((mask & type.type) == type.type) 
+                var bitmask = type.GetBitmask();
+                
+                if ((mask & bitmask) == bitmask) 
                     names.Add(type.name);
             }
         }

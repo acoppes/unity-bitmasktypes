@@ -23,7 +23,7 @@ namespace Gemserk.Examples
         [BitMask(32)]
         public int type6Masked;
 
-        public GenericTypeAsset myType;
+        public BitmaskTypeAsset myType;
 
         public GenericBitMask mask;
 

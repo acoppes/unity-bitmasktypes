@@ -23,7 +23,7 @@ namespace Gemserk.Examples
         
         public static int Poison = 1 << 3;
         
-        public static int Ranged_Fire = 1 << 4;
+        public static int Test = 15;
         
         public static string ValueToName(int value)
         {
@@ -31,7 +31,7 @@ namespace Gemserk.Examples
             if (value == Ranged) return nameof(Ranged);
             if (value == Thorn) return nameof(Thorn);
             if (value == Poison) return nameof(Poison);
-            if (value == Ranged_Fire) return nameof(Ranged_Fire);
+            if (value == Test) return nameof(Test);
             return null;
         }
         
@@ -41,7 +41,7 @@ namespace Gemserk.Examples
             if ((mask & Ranged) == Ranged) collection.Add(nameof(Ranged));
             if ((mask & Thorn) == Thorn) collection.Add(nameof(Thorn));
             if ((mask & Poison) == Poison) collection.Add(nameof(Poison));
-            if ((mask & Ranged_Fire) == Ranged_Fire) collection.Add(nameof(Ranged_Fire));
+            if ((mask & Test) == Test) collection.Add(nameof(Test));
         }
     }
 }
