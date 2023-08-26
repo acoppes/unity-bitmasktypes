@@ -7,7 +7,7 @@ namespace Gemserk.BitmaskTypes
     public class GenericBitMask
     {
         [SerializeField]
-        private GenericTypeAsset[] types;
+        private BitmaskTypeAsset[] types;
 
         private bool calculated;
         private int mask;
