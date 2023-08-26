@@ -22,5 +22,14 @@ namespace Gemserk.Examples
         public static int Thorn = 1 << 2;
         
         public static int Poison = 1 << 3;
+        
+        public static string ValueToName(int value)
+        {
+            if (value == Melee) return nameof(Melee);
+            if (value == Ranged) return nameof(Ranged);
+            if (value == Thorn) return nameof(Thorn);
+            if (value == Poison) return nameof(Poison);
+            return null;
+        }
     }
 }

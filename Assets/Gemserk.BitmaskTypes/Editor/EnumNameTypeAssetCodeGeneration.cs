@@ -138,7 +138,7 @@ namespace Gemserk.BitmaskTypes.Editor
                 TypeAttributes = TypeAttributes.Public,
                 IsPartial = asset.partialClass
             };
-
+            
             for (var i = 0; i < asset.types.Count; i++)
             {
                 var type = asset.types[i];
@@ -155,22 +155,29 @@ namespace Gemserk.BitmaskTypes.Editor
 
                 targetClass.Members.Add(intValue);
             }
+            
+            var nameOfValueStaticMethod = new CodeMemberMethod()
+            {
+                Name = "ValueToName",
+                Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                Parameters =
+                {
+                    new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(int)), "value")
+                },
+                ReturnType = new CodeTypeReference(typeof(string))
+            };
 
-            // targetClass.Members.Add(new CodeMemberMethod()
-            // {
-            //     Name = "MatchAny",
-            //     Attributes = MemberAttributes.Public | MemberAttributes.Static,
-            //     Parameters =
-            //     {
-            //         new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(int)), "a"),
-            //         new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(int)), "b")
-            //     },
-            //     ReturnType = new CodeTypeReference(typeof(bool)),
-            //     Statements =
-            //     {
-            //         new CodeSnippetExpression("return (a & b) != 0")
-            //     }
-            // });
+            asset.types.ForEach(t =>
+            {
+                nameOfValueStaticMethod.Statements.Add(new CodeSnippetExpression($"if (value == {t.name}) return nameof({t.name})"));
+            });
+            nameOfValueStaticMethod.Statements.Add(new CodeSnippetExpression("return null"));
+
+            // var nameOfSnippets = asset.types
+            //     .Select(t => new CodeSnippetExpression($"if (value == {t.name}) return nameof({t.name})")).ToList();
+            // nameOfSnippets.Add(new CodeSnippetExpression("return null"));
+            
+            targetClass.Members.Add(nameOfValueStaticMethod);
 
             targetNamespace.Types.Add(targetClass);
             targetUnit.Namespaces.Add(targetNamespace);
