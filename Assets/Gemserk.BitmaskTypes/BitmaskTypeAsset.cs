@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Gemserk.BitmaskTypes
@@ -17,12 +16,6 @@ namespace Gemserk.BitmaskTypes
         public override int GetBitmask()
         {
             return type;
-        }
-
-        public override string GetCodeRepresentation()
-        { 
-            var shiftValue = (int) Math.Round(Math.Log(GetBitmask(), 2));
-            return $"1 << {shiftValue}";
         }
     }
 }
