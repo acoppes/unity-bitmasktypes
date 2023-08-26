@@ -16,7 +16,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 947944857c4e3844e8bc118066b5d182, type: 2}
   - {fileID: 11400000, guid: 93c20faacd9979648adefaac1ea46846, type: 2}
   - {fileID: 11400000, guid: 4483a34d9bf93e648b0211a8e35fc37c, type: 2}
+  - {fileID: 11400000, guid: 360e10ee7beb4e940bc79c79d20bd8c4, type: 2}
+  - {fileID: 11400000, guid: e596524980467744bb191e2f4810fb5d, type: 2}
   generateCode: 1
   className: Damages
   namespaceName: Gemserk.Examples
   outputFolder: Gemserk.ExamplesCore
+  partialClass: 1
+  appendGeneratedToFileName: 1
