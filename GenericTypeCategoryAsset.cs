@@ -9,10 +9,13 @@ namespace Gemserk.BitmaskTypes
         public List<GenericTypeAsset> types;
         
         public bool generateCode;
+        
         public string className;
         public string namespaceName;
-
         public string outputFolder;
+
+        public bool partialClass = true;
+        public bool appendGeneratedToFileName = true;
 
         // public string[] GetOrderedNames()
         // {
