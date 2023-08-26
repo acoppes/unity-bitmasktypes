@@ -15,10 +15,5 @@ namespace Gemserk.BitmaskTypes
         {
             return 1 << value;
         }
-
-        public override string GetCodeRepresentation()
-        {
-            return $"{value}";
-        }
     }
 }

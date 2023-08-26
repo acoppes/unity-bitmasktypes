@@ -143,13 +143,24 @@ namespace Gemserk.BitmaskTypes.Editor
             for (var i = 0; i < asset.types.Count; i++)
             {
                 var type = asset.types[i];
+
+                CodeExpression initExpression = null;
+                
+                if (type is IntTypeAsset intAsset)
+                {
+                    initExpression = new CodeSnippetExpression($"{intAsset.value}");
+                } else if (type is BitmaskTypeAsset bitmaskAsset)
+                {
+                    var shiftValue = (int) Math.Round(Math.Log(bitmaskAsset.type, 2));
+                    initExpression = new CodeSnippetExpression($"1 << {shiftValue}");
+                }
             
                 var intValue = new CodeMemberField
                 {
                     Attributes = MemberAttributes.Public | MemberAttributes.Static,
                     Name = type.name,
                     Type = new CodeTypeReference(typeof(int)),
-                    InitExpression = new CodeSnippetExpression(type.GetCodeRepresentation())
+                    InitExpression = initExpression
                     // InitExpression = new CodeSnippetExpression($"{type.type}")
                 };
 
