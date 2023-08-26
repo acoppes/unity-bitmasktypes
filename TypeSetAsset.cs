@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Gemserk.BitmaskTypes
 {
-    [CreateAssetMenu(menuName = "Gemserk/Generic Type Category")]
-    public class GenericTypeCategoryAsset : ScriptableObject
+    [CreateAssetMenu(menuName = "Gemserk/Types/Types Set")]
+    public class TypeSetAsset : ScriptableObject
     {
         public List<BaseIntTypeAsset> types;
         

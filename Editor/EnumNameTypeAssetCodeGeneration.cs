@@ -127,7 +127,7 @@ namespace Gemserk.BitmaskTypes.Editor
             AssetDatabase.Refresh();
         }
         
-        public static void GenerateGenericTypeCategoryClass(GenericTypeCategoryAsset asset, string targetFolder)
+        public static void GenerateGenericTypeCategoryClass(TypeSetAsset asset, string targetFolder)
         {
             var targetUnit = new CodeCompileUnit();
             var targetNamespace = new CodeNamespace(asset.namespaceName);
