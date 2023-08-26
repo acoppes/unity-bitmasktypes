@@ -15,10 +15,10 @@ namespace Gemserk.Examples
     public partial class Damages
     {
         
-        public static int Melee = 2;
+        public static int Melee = 1 << 1;
         
-        public static int Ranged = 1;
+        public static int Ranged = 1 << 0;
         
-        public static int Thorn = 4;
+        public static int Thorn = 1 << 2;
     }
 }
