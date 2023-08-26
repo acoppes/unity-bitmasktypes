@@ -12,7 +12,7 @@ namespace Gemserk.Examples
 {
     
     
-    public class Damages
+    public partial class Damages
     {
         
         public static int Melee = 2;
