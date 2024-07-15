@@ -32,6 +32,21 @@ namespace Gemserk.BitmaskTypes.Editor
                     EnumNameTypeAssetCodeGeneration.GenerateTypeSetClass(categoryAsset, folder);
                 }
             }
+            
+            if (GUILayout.Button("Assign Values to Types"))
+            {
+                var types = categoryAsset.types;
+
+                for (var i = 0; i < types.Count; i++)
+                {
+                    var type = types[i];
+                    if (type is IntTypeAsset intType)
+                    {
+                        intType.value = categoryAsset.isBitmask ? 1 << i : i;
+                        EditorUtility.SetDirty(type);
+                    }
+                }
+            }
 
             serializedObject.ApplyModifiedProperties();
         }
