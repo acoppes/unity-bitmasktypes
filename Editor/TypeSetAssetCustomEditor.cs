@@ -17,6 +17,11 @@ namespace Gemserk.BitmaskTypes.Editor
             {
                 if (GUILayout.Button("Generate"))
                 {
+                    if (categoryAsset.autoAssignedValues)
+                    {
+                        AssignValuesToTypes(categoryAsset);
+                    }
+                    
                     var folder = categoryAsset.outputFolder;
                     
                     if (string.IsNullOrEmpty(folder))
@@ -35,20 +40,26 @@ namespace Gemserk.BitmaskTypes.Editor
             
             if (GUILayout.Button("Assign Values to Types"))
             {
-                var types = categoryAsset.types;
-
-                for (var i = 0; i < types.Count; i++)
-                {
-                    var type = types[i];
-                    if (type is IntTypeAsset intType)
-                    {
-                        intType.value = categoryAsset.isBitmask ? 1 << i : i;
-                        EditorUtility.SetDirty(type);
-                    }
-                }
+                AssignValuesToTypes(categoryAsset);
             }
 
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private static void AssignValuesToTypes(TypeSetAsset categoryAsset)
+        {
+            var types = categoryAsset.types;
+
+            for (var i = 0; i < types.Count; i++)
+            {
+                var type = types[i];
+                if (type is IntTypeAsset intType)
+                {
+                    intType.value = categoryAsset.isBitmask ? 1 << i : i;
+                    EditorUtility.SetDirty(type);
+                    AssetDatabase.SaveAssetIfDirty(type);
+                }
+            }
         }
     }
 }
