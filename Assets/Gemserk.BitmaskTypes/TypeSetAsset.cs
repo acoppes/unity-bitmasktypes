@@ -18,6 +18,7 @@ namespace Gemserk.BitmaskTypes
         public bool appendGeneratedToFileName = true;
 
         public bool isBitmask;
+        public bool autoAssignedValues;
         
         public string GetTypeName(int value)
         {

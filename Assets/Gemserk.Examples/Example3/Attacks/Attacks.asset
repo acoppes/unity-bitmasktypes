@@ -15,9 +15,12 @@ MonoBehaviour:
   types:
   - {fileID: 11400000, guid: 4f9b289749cad20458e697f5607e1c29, type: 2}
   - {fileID: 11400000, guid: 5fc429d459eeb5b44bc42e2d44d0651e, type: 2}
+  - {fileID: 11400000, guid: 6429d01212af14e4e92a7d6d973672eb, type: 2}
   generateCode: 1
   className: BasicAttacks
   namespaceName: Gemserk.Examples
   outputFolder: Gemserk.ExamplesCore
   partialClass: 1
   appendGeneratedToFileName: 1
+  isBitmask: 1
+  autoAssignedValues: 1

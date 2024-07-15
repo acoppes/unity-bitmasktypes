@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac17fecc215b452f93ac40cb87d894fa, type: 3}
-  m_Name: Attack2
+  m_Name: Attack3
   m_EditorClassIdentifier: 
-  value: 2
+  value: 4

@@ -15,14 +15,17 @@ namespace Gemserk.Examples
     public partial class BasicAttacks
     {
         
-        public static int Attack1 = 0;
+        public static int Attack1 = 1;
         
-        public static int Attack2 = 1;
+        public static int Attack2 = 2;
+        
+        public static int Attack3 = 4;
         
         public static string ValueToName(int value)
         {
             if (value == Attack1) return nameof(Attack1);
             if (value == Attack2) return nameof(Attack2);
+            if (value == Attack3) return nameof(Attack3);
             return null;
         }
         
@@ -30,6 +33,7 @@ namespace Gemserk.Examples
         {
             if ((mask & (1 << Attack1)) == (1 << Attack1)) collection.Add(nameof(Attack1));
             if ((mask & (1 << Attack2)) == (1 << Attack2)) collection.Add(nameof(Attack2));
+            if ((mask & (1 << Attack3)) == (1 << Attack3)) collection.Add(nameof(Attack3));
         }
     }
 }
