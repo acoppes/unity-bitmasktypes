@@ -50,7 +50,7 @@ namespace Gemserk.BitmaskTypes.Editor
                 
                 if (GUILayout.Button("Open Code"))
                 {
-                    OpenScriptToEdit(categoryAsset.className);
+                    OpenScriptToEdit($"{categoryAsset.className}.Generated");
                 }
             }
             
