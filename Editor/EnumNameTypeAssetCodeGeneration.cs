@@ -145,10 +145,18 @@ namespace Gemserk.BitmaskTypes.Editor
                 var type = asset.types[i];
 
                 CodeExpression initExpression = null;
-                
+
                 if (type is IntTypeAsset intAsset)
                 {
-                    initExpression = new CodeSnippetExpression($"{intAsset.value}");
+                    if (asset.isBitmask)
+                    {
+                        var shiftValue = (int) Math.Round(Math.Log(intAsset.value, 2));
+                        initExpression = new CodeSnippetExpression($"1 << {shiftValue}");
+                    }
+                    else
+                    {
+                        initExpression = new CodeSnippetExpression($"{intAsset.value}");
+                    }
                 } else if (type is BitmaskTypeAsset bitmaskAsset)
                 {
                     var shiftValue = (int) Math.Round(Math.Log(bitmaskAsset.type, 2));
@@ -230,7 +238,7 @@ namespace Gemserk.BitmaskTypes.Editor
             var options = new CodeGeneratorOptions
             {
                 BlankLinesBetweenMembers = true,
-                BracingStyle = "C",
+                BracingStyle = "C"
             };
 
             var generatedClassFile = $"{asset.className}.cs";
