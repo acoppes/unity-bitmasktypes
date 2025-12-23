@@ -7,6 +7,17 @@ namespace Gemserk.BitmaskTypes.Editor
     [CustomEditor(typeof(TypeSetAsset))]
     public class TypeSetAssetCustomEditor : UnityEditor.Editor
     {
+        private static void OpenScriptToEdit(string scriptName)
+        {
+            var files = AssetDatabase.FindAssets($"t:Script {scriptName}");
+                
+            if (files.Length >0)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(files[0]);
+                AssetDatabase.OpenAsset(AssetDatabase.LoadAssetAtPath(path, typeof(Object)));
+            }
+        }
+        
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
@@ -35,6 +46,11 @@ namespace Gemserk.BitmaskTypes.Editor
                     }
                     
                     EnumNameTypeAssetCodeGeneration.GenerateTypeSetClass(categoryAsset, folder);
+                }
+                
+                if (GUILayout.Button("Open Code"))
+                {
+                    OpenScriptToEdit(categoryAsset.className);
                 }
             }
             
