@@ -15,11 +15,11 @@ namespace Gemserk.Examples
     public partial class BasicAttacks
     {
         
-        public static int Attack1 = 1;
+        public static int Attack1 = 1 << 0;
         
-        public static int Attack2 = 2;
+        public static int Attack2 = 1 << 1;
         
-        public static int Attack3 = 4;
+        public static int Attack3 = 1 << 2;
         
         public const int TOTAL_TYPES = 3;
         
