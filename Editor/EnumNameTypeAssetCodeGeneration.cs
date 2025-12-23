@@ -166,6 +166,16 @@ namespace Gemserk.BitmaskTypes.Editor
 
                 targetClass.Members.Add(intValue);
             }
+
+            {
+                targetClass.Members.Add(new CodeMemberField
+                {
+                    Attributes = MemberAttributes.Public | MemberAttributes.Const,
+                    Name = "TOTAL_TYPES",
+                    Type = new CodeTypeReference(typeof(int)),
+                    InitExpression = new CodeSnippetExpression($"{asset.types.Count}")
+                });
+            }
             
             var nameOfValueStaticMethod = new CodeMemberMethod()
             {
