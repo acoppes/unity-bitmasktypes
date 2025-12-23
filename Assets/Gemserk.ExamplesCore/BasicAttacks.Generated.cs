@@ -21,6 +21,8 @@ namespace Gemserk.Examples
         
         public static int Attack3 = 4;
         
+        public const int TOTAL_TYPES = 3;
+        
         public static string ValueToName(int value)
         {
             if (value == Attack1) return nameof(Attack1);
